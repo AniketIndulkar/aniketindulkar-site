@@ -1,0 +1,55 @@
+---
+import SystemVisual from '../components/SystemVisual.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Aniket Indulkar — Senior Android Engineer';
+const description =
+  'Aniket Indulkar is a Senior Android Engineer writing and building around Android performance, mobile architecture and on-device AI.';
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/AniketIndulkar' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="landing">
+    <div class="landing__ambient" aria-hidden="true"></div>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="eyebrow">Aniket Indulkar</p>
+
+        <h1 id="hero-title">
+          <span>Building intelligent,</span>
+          <span>high-performance</span>
+          <span>mobile systems.</span>
+        </h1>
+
+        <p class="hero__intro">
+          Senior Android Engineer exploring the intersection of mobile performance,
+          architecture and on-device AI.
+        </p>
+
+        <div class="hero__footer">
+          <p class="status"><span class="status__signal"></span>New site in progress</p>
+
+          <nav class="social-links" aria-label="External profiles">
+            {
+              socialLinks.map(({ label, href }) => (
+                <a href={href} target="_blank" rel="me noreferrer">
+                  <span>{label}</span>
+                  <span class="social-links__arrow" aria-hidden="true">↗</span>
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <SystemVisual />
+      </div>
+    </section>
+  </main>
+</BaseLayout>
