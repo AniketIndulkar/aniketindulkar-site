@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="d1-title d1-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d1-title">Production search pipeline</title>
+        <desc id="d1-desc">A query moves through understanding, three parallel candidate generators, fusion, ranking, reranking, business rules, and results.</desc>
+        <defs>
+          <marker id="d1-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+        </defs>
+        <rect class="node-accent" x="130" y="8" width="100" height="28" rx="6" />
+        <text class="label" x="180" y="26">Query</text>
+        <path class="connector" d="M180 36V55" marker-end="url(#d1-arrow)" />
+        <rect class="node" x="105" y="58" width="150" height="30" rx="6" />
+        <text class="label" x="180" y="77">Query understanding</text>
+        <path class="connector" d="M180 88V105" marker-end="url(#d1-arrow)" />
+        <rect class="node" x="20" y="108" width="320" height="72" rx="8" />
+        <text class="label-small" x="180" y="123">CANDIDATE GENERATION</text>
+        <rect class="node-accent" x="32" y="136" width="88" height="30" rx="5" />
+        <rect class="node-secondary" x="136" y="136" width="88" height="30" rx="5" />
+        <rect class="node" x="240" y="136" width="88" height="30" rx="5" />
+        <text class="label" x="76" y="155">Lexical</text>
+        <text class="label" x="180" y="155">Dense / ANN</text>
+        <text class="label" x="284" y="150">Learned</text>
+        <text class="label-small" x="284" y="162">sparse</text>
+        <path class="connector" d="M180 180V197" marker-end="url(#d1-arrow)" />
+        <rect class="node-accent" x="138" y="200" width="84" height="28" rx="6" />
+        <text class="label" x="180" y="218">Fusion</text>
+        <path class="connector" d="M222 214H245" marker-end="url(#d1-arrow)" />
+        <rect class="node" x="248" y="200" width="92" height="28" rx="6" />
+        <text class="label" x="294" y="218">Light ranker</text>
+        <path class="connector" d="M294 228V247H222" marker-end="url(#d1-arrow)" />
+        <rect class="node-secondary" x="126" y="250" width="96" height="28" rx="6" />
+        <text class="label" x="174" y="268">Reranker</text>
+        <path class="connector" d="M126 264H102" marker-end="url(#d1-arrow)" />
+        <rect class="node" x="20" y="250" width="82" height="28" rx="6" />
+        <text class="label" x="61" y="262">Rules &amp;</text>
+        <text class="label-small" x="61" y="273">diversity</text>
+        <path class="connector" d="M61 278V287" marker-end="url(#d1-arrow)" />
+        <text class="label" x="61" y="299">Results</text>
+</svg>

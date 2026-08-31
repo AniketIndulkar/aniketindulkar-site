@@ -1,0 +1,39 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  publishedDate: Date;
+  readingTime: number;
+  topics: string[];
+}
+
+const { href, title, description, publishedDate, readingTime, topics } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(publishedDate);
+---
+
+<article class="post-card">
+  <a class="post-card__link" href={href}>
+    <div class="post-card__meta">
+      <time datetime={publishedDate.toISOString()}>{formattedDate}</time>
+      <span aria-hidden="true">·</span>
+      <span>{readingTime} min read</span>
+    </div>
+
+    <div class="post-card__body">
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+
+    <div class="post-card__footer">
+      <ul class="topic-list" aria-label="Topics">
+        {topics.map((topic) => <li>{topic}</li>)}
+      </ul>
+      <span class="post-card__arrow" aria-hidden="true">→</span>
+    </div>
+  </a>
+</article>

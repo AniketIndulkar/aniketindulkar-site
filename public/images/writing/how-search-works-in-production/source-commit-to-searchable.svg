@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="d7-title d7-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d7-title">Transactional outbox and indexing freshness</title>
+        <desc id="d7-desc">An application atomically writes a business row and outbox event. Change data capture carries the event through a stream and idempotent indexer. Refresh then makes it searchable.</desc>
+        <defs>
+          <marker id="d7-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+        </defs>
+        <rect class="node-accent" x="18" y="25" width="82" height="38" rx="6" />
+        <text class="label" x="59" y="49">Application</text>
+        <path class="connector" d="M100 44H119" marker-end="url(#d7-arrow)" />
+        <rect class="node" x="122" y="12" width="116" height="66" rx="7" />
+        <text class="label" x="180" y="30">DB transaction</text>
+        <text class="label-small" x="180" y="49">business row</text>
+        <text class="label-small" x="180" y="65">+ outbox event</text>
+        <path class="connector" d="M238 44H257" marker-end="url(#d7-arrow)" />
+        <rect class="node-secondary" x="260" y="25" width="82" height="38" rx="6" />
+        <text class="label" x="301" y="49">CDC</text>
+        <path class="connector" d="M301 63V100H274" marker-end="url(#d7-arrow)" />
+        <rect class="node" x="188" y="104" width="86" height="38" rx="6" />
+        <text class="label" x="231" y="128">Event stream</text>
+        <path class="connector" d="M188 123H169" marker-end="url(#d7-arrow)" />
+        <rect class="node" x="78" y="104" width="88" height="38" rx="6" />
+        <text class="label" x="122" y="120">Idempotent</text>
+        <text class="label-small" x="122" y="134">indexer</text>
+        <path class="connector" d="M122 142V178" marker-end="url(#d7-arrow)" />
+        <rect class="node-secondary" x="78" y="182" width="88" height="38" rx="6" />
+        <text class="label" x="122" y="206">Index segment</text>
+        <path class="connector" d="M166 201H196" marker-end="url(#d7-arrow)" />
+        <rect class="node-accent" x="200" y="182" width="72" height="38" rx="6" />
+        <text class="label" x="236" y="206">Refresh</text>
+        <path class="connector" d="M272 201H291" marker-end="url(#d7-arrow)" />
+        <rect class="node-success" x="294" y="182" width="48" height="38" rx="6" />
+        <text class="label" x="318" y="197">Search-</text>
+        <text class="label-small" x="318" y="211">able</text>
+        <path class="guide" d="M18 265H342" />
+        <text class="annotation" x="18" y="253">source commit</text>
+        <text class="annotation" x="266" y="253">searchable</text>
+        <text class="label" x="180" y="286">Freshness = CDC + consumer + indexing + refresh lag</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="d3-title d3-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d3-title">Hybrid lexical and dense retrieval</title>
+        <desc id="d3-desc">Lexical and dense retrieval produce independent ranked candidate lists. Reciprocal rank fusion combines rank positions into one candidate list.</desc>
+        <defs>
+          <marker id="d3-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+        </defs>
+        <rect class="node-accent" x="130" y="10" width="100" height="30" rx="6" />
+        <text class="label" x="180" y="29">User query</text>
+        <path class="connector" d="M180 40V60M180 60H87V78M180 60H273V78" marker-end="url(#d3-arrow)" />
+        <rect class="node" x="24" y="82" width="126" height="92" rx="7" />
+        <text class="label" x="87" y="103">BM25 / lexical</text>
+        <text class="label-small" x="87" y="126">1 · doc 18</text>
+        <text class="label-small" x="87" y="144">2 · doc 42</text>
+        <text class="label-small" x="87" y="162">3 · doc 07</text>
+        <rect class="node-secondary" x="210" y="82" width="126" height="92" rx="7" />
+        <text class="label" x="273" y="103">Dense / semantic</text>
+        <text class="label-small" x="273" y="126">1 · doc 42</text>
+        <text class="label-small" x="273" y="144">2 · doc 91</text>
+        <text class="label-small" x="273" y="162">3 · doc 18</text>
+        <path class="connector" d="M87 174V198H145M273 174V198H215" marker-end="url(#d3-arrow)" />
+        <rect class="node-accent" x="120" y="190" width="120" height="58" rx="6" />
+        <text class="label" x="180" y="210">RRF</text>
+        <text class="label-small" x="180" y="229">rank positions</text>
+        <text class="label-small" x="180" y="243">not raw scores</text>
+        <path class="connector" d="M180 248V257" marker-end="url(#d3-arrow)" />
+        <text class="label" x="180" y="276">42 · 18 · 91 · 07</text>
+</svg>

@@ -1,0 +1,28 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Aniket Indulkar, home">
+      <span class="site-header__mark" aria-hidden="true"></span>
+      <span>Aniket Indulkar</span>
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <a href="/writing/" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>
+        Writing
+      </a>
+      <a href="https://github.com/AniketIndulkar" target="_blank" rel="me noreferrer">
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/aniketindulkar7/"
+        target="_blank"
+        rel="me noreferrer"
+      >
+        LinkedIn <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+  </div>
+</header>

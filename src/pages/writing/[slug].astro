@@ -1,0 +1,33 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getReadingTime } from '../../utils/readingTime';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing', ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'writing'>;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<ArticleLayout
+  title={post.data.title}
+  description={post.data.description}
+  publishedDate={post.data.publishedDate}
+  updatedDate={post.data.updatedDate}
+  topics={post.data.topics}
+  readingTime={getReadingTime(post.body ?? '')}
+  headings={headings}
+>
+  <Content />
+</ArticleLayout>

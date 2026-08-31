@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="d9-title d9-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d9-title">Reranking depth tradeoff</title>
+        <desc id="d9-desc">As reranking depth increases, relevance improvement flattens while p99 latency continues rising. The production operating point sits near the relevance knee.</desc>
+        <line class="connector" x1="52" y1="224" x2="336" y2="224" />
+        <line class="connector" x1="52" y1="224" x2="52" y2="35" />
+        <text class="annotation" x="158" y="259">Reranking depth →</text>
+        <text class="annotation" transform="translate(17 158) rotate(-90)">Outcome →</text>
+        <path class="guide" d="M52 177H336M52 129H336M52 81H336" />
+        <path class="connector-accent" d="M52 208C90 168 122 126 164 96S247 67 336 62" />
+        <path class="connector-secondary" d="M52 216C105 213 148 205 190 183S270 123 336 46" />
+        <line x1="185" y1="53" x2="185" y2="224" stroke="#79d49b" stroke-width="1.5" stroke-dasharray="4 4" />
+        <circle cx="185" cy="87" r="6" fill="#79d49b" />
+        <text class="label-left" x="202" y="82">Operating point</text>
+        <line x1="65" y1="24" x2="89" y2="24" stroke="#6ed9ee" stroke-width="3" />
+        <text class="annotation" x="95" y="28">nDCG@10 improvement</text>
+        <line x1="224" y1="24" x2="248" y2="24" stroke="#9187ff" stroke-width="3" />
+        <text class="annotation" x="254" y="28">p99 latency</text>
+        <text class="annotation" x="236" y="102">Relevance flattens</text>
+        <text class="annotation" x="238" y="183">Latency keeps rising</text>
+</svg>

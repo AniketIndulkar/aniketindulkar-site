@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="d5-title d5-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d5-title">Multi-stage candidate funnel</title>
+        <desc id="d5-desc">A corpus of ten million documents is narrowed to about one thousand retrieval candidates, two hundred lightweight ranking candidates, fifty expensive ranking candidates, and ten to twenty results.</desc>
+        <polygon points="24,28 336,28 312,78 48,78" fill="#10202a" stroke="#6ed9ee" />
+        <polygon points="48,91 312,91 282,141 78,141" fill="#151827" stroke="#9187ff" />
+        <polygon points="78,154 282,154 250,204 110,204" fill="#17152a" stroke="#9187ff" />
+        <polygon points="110,217 250,217 220,267 140,267" fill="#0f1d18" stroke="#79d49b" />
+        <text class="label" x="180" y="49">Corpus · 10M documents</text>
+        <text class="label-small" x="180" y="66">broadest search space</text>
+        <text class="label" x="180" y="112">L0 retrieval · ~1,000</text>
+        <text class="label-small" x="180" y="129">cheap and recall-oriented</text>
+        <text class="label" x="180" y="175">Lightweight ranker · ~200</text>
+        <text class="label" x="180" y="238">Reranker · ~50</text>
+        <text class="label" x="180" y="291">Results · 10–20</text>
+</svg>

@@ -1,0 +1,99 @@
+---
+import type { MarkdownHeading } from 'astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  updatedDate?: Date;
+  topics: string[];
+  readingTime: number;
+  headings: MarkdownHeading[];
+}
+
+const {
+  title,
+  description,
+  publishedDate,
+  updatedDate,
+  topics,
+  readingTime,
+  headings,
+} = Astro.props;
+
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${title} — Aniket Indulkar`}
+  description={description}
+  pageType="article"
+  socialImage={null}
+  publishedDate={publishedDate}
+  topics={topics}
+>
+  <div class="site-page">
+    <SiteHeader />
+
+    <main class="article-page">
+      <article>
+        <header class="article-header">
+          <a class="article-header__back" href="/writing/">Writing</a>
+          <h1>{title}</h1>
+          <p class="article-header__description">{description}</p>
+
+          <div class="article-header__meta">
+            <time datetime={publishedDate.toISOString()}>{dateFormatter.format(publishedDate)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTime} min read</span>
+            {
+              updatedDate && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>Updated {dateFormatter.format(updatedDate)}</span>
+                </>
+              )
+            }
+          </div>
+
+          <ul class="topic-list" aria-label="Article topics">
+            {topics.map((topic) => <li>{topic}</li>)}
+          </ul>
+        </header>
+
+        <div class="article-layout">
+          <div class="article-main">
+            <details class="article-toc-mobile">
+              <summary>In this article</summary>
+              <TableOfContents headings={headings} label="Article sections" />
+            </details>
+
+            <div class="prose">
+              <slot />
+            </div>
+
+            <footer class="article-footer">
+              <p class="article-footer__eyebrow">Written by Aniket Indulkar</p>
+              <p>
+                Senior Android Engineer exploring mobile performance, architecture and on-device
+                AI.
+              </p>
+              <a href="/writing/">← Back to writing</a>
+            </footer>
+          </div>
+
+          <aside class="article-sidebar">
+            <TableOfContents headings={headings} />
+          </aside>
+        </div>
+      </article>
+    </main>
+  </div>
+</BaseLayout>
