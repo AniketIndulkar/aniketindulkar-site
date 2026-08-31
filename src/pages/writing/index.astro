@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '../../components/PostCard.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getReadingTime } from '../../utils/readingTime';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
+);
+
+const title = 'Writing — Aniket Indulkar';
+const description =
+  'Long-form engineering writing about mobile systems, performance, architecture, on-device AI and the systems behind modern products.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="site-page">
+    <SiteHeader />
+
+    <main class="writing-index">
+      <header class="writing-index__header">
+        <p class="section-eyebrow">Writing</p>
+        <h1>Engineering systems,<br />explained from first principles.</h1>
+        <p>
+          Long-form notes on performance, architecture, intelligent mobile systems and the
+          engineering tradeoffs behind production software.
+        </p>
+      </header>
+
+      <section class="post-list" aria-labelledby="latest-writing">
+        <h2 id="latest-writing" class="visually-hidden">Latest writing</h2>
+        {
+          posts.map((post) => (
+            <PostCard
+              href={`/writing/${post.id}/`}
+              title={post.data.title}
+              description={post.data.description}
+              publishedDate={post.data.publishedDate}
+              readingTime={getReadingTime(post.body ?? '')}
+              topics={post.data.topics}
+            />
+          ))
+        }
+      </section>
+    </main>
+  </div>
+</BaseLayout>

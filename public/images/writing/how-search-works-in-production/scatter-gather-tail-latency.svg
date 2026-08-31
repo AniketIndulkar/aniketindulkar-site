@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="d6-title d6-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d6-title">Distributed search fan-out and tail latency</title>
+        <desc id="d6-desc">A coordinator fans a query to four shards. One slow shard delays the merge and the overall response. At one hundred shards with a one percent slow probability, about sixty-three percent of requests encounter a slow shard.</desc>
+        <defs>
+          <marker id="d6-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+        </defs>
+        <rect class="node-accent" x="18" y="105" width="86" height="44" rx="7" />
+        <text class="label" x="61" y="124">Coordinator</text>
+        <text class="label-small" x="61" y="139">query fan-out</text>
+        <rect class="node" x="150" y="20" width="78" height="38" rx="6" />
+        <rect class="node" x="150" y="75" width="78" height="38" rx="6" />
+        <rect class="node-warning" x="150" y="130" width="78" height="38" rx="6" />
+        <rect class="node" x="150" y="185" width="78" height="38" rx="6" />
+        <text class="label" x="189" y="44">Shard 1</text>
+        <text class="label" x="189" y="99">Shard 2</text>
+        <text class="label" x="189" y="148">Shard 3</text>
+        <text class="label-small" x="189" y="162">slow tail</text>
+        <text class="label" x="189" y="209">Shard 4</text>
+        <path class="connector" d="M104 127H126V39H146M126 94H146M126 149H146M126 204H146" marker-end="url(#d6-arrow)" />
+        <path class="connector" d="M228 39H248V127H260M228 94H248M228 149H248M228 204H248" marker-end="url(#d6-arrow)" />
+        <rect class="node-secondary" x="264" y="105" width="78" height="44" rx="7" />
+        <text class="label" x="303" y="124">Merge</text>
+        <text class="label-small" x="303" y="139">global top-k</text>
+        <rect class="node-warning" x="46" y="254" width="268" height="34" rx="6" />
+        <text class="label" x="180" y="269">100 shards × 1% slow</text>
+        <text class="label-small" x="180" y="282">≈ 63% of requests see at least one slow shard</text>
+</svg>

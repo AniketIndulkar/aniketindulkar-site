@@ -4,11 +4,22 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  pageType?: 'website' | 'article';
+  socialImage?: string | null;
+  publishedDate?: Date;
+  topics?: string[];
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  pageType = 'website',
+  socialImage = '/og.png',
+  publishedDate,
+  topics = [],
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL('/og.png', Astro.site);
+const socialImageURL = socialImage ? new URL(socialImage, Astro.site) : null;
 ---
 
 <!doctype html>
@@ -24,27 +35,45 @@ const socialImageURL = new URL('/og.png', Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={pageType} />
     <meta property="og:site_name" content="Aniket Indulkar" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={socialImageURL} />
-    <meta property="og:image:width" content="1731" />
-    <meta property="og:image:height" content="909" />
-    <meta
-      property="og:image:alt"
-      content="Aniket Indulkar — Building intelligent, high-performance mobile systems."
-    />
+    {
+      socialImageURL && (
+        <>
+          <meta property="og:image" content={socialImageURL} />
+          <meta property="og:image:width" content="1731" />
+          <meta property="og:image:height" content="909" />
+          <meta
+            property="og:image:alt"
+            content="Aniket Indulkar — Building intelligent, high-performance mobile systems."
+          />
+        </>
+      )
+    }
+    {
+      pageType === 'article' && publishedDate && (
+        <meta property="article:published_time" content={publishedDate.toISOString()} />
+      )
+    }
+    {pageType === 'article' && topics.map((topic) => <meta property="article:tag" content={topic} />)}
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content={socialImageURL ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={socialImageURL} />
-    <meta
-      name="twitter:image:alt"
-      content="Aniket Indulkar — Building intelligent, high-performance mobile systems."
-    />
+    {
+      socialImageURL && (
+        <>
+          <meta name="twitter:image" content={socialImageURL} />
+          <meta
+            name="twitter:image:alt"
+            content="Aniket Indulkar — Building intelligent, high-performance mobile systems."
+          />
+        </>
+      )
+    }
   </head>
   <body>
     <slot />

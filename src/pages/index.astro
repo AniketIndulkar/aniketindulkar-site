@@ -7,8 +7,9 @@ const description =
   'Aniket Indulkar is a Senior Android Engineer writing and building around Android performance, mobile architecture and on-device AI.';
 
 const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/AniketIndulkar' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/' },
+  { label: 'Writing', href: '/writing/', external: false },
+  { label: 'GitHub', href: 'https://github.com/AniketIndulkar', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/', external: true },
 ];
 ---
 
@@ -36,10 +37,14 @@ const socialLinks = [
 
           <nav class="social-links" aria-label="External profiles">
             {
-              socialLinks.map(({ label, href }) => (
-                <a href={href} target="_blank" rel="me noreferrer">
+              socialLinks.map(({ label, href, external }) => (
+                <a
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'me noreferrer' : undefined}
+                >
                   <span>{label}</span>
-                  <span class="social-links__arrow" aria-hidden="true">↗</span>
+                  <span class="social-links__arrow" aria-hidden="true">{external ? '↗' : '→'}</span>
                 </a>
               ))
             }

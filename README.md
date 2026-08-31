@@ -1,6 +1,6 @@
 # aniketindulkar.dev
 
-The first version of Aniket Indulkar's personal engineering site: a focused coming-soon page for future writing, projects, open-source work, speaking, and an about section.
+Aniket Indulkar's personal engineering site: a focused home for technical writing and, over time, projects, open-source work, speaking, and an about section.
 
 ## Tech stack
 
@@ -42,7 +42,7 @@ Create a Cloudflare Pages project connected to this repository and use:
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Root directory: `/`
-- Node.js version: a current active LTS release
+- Node.js version: `22.19.0` (pinned in `.node-version`)
 
 The canonical site URL is configured as `https://aniketindulkar.dev` in `astro.config.mjs`.
 
@@ -50,11 +50,30 @@ The canonical site URL is configured as `https://aniketindulkar.dev` in `astro.c
 
 The GitHub and LinkedIn profile URLs are configured in `src/pages/index.astro`. The SVG favicon in `public/favicon.svg` is intentionally simple and can be replaced later with a final brand mark. The bespoke social preview is stored at `public/og.png`.
 
+## Writing
+
+Published articles live in `src/content/writing/` as Markdown files with typed frontmatter. The writing archive at `/writing` and individual article routes are generated automatically at build time.
+
+To add an article, create a Markdown file with this frontmatter:
+
+```yaml
+---
+title: Article title
+description: A concise search and social description.
+publishedDate: 2026-08-31
+topics:
+  - Android
+  - Performance
+draft: false
+---
+```
+
+Set `draft: true` to keep an article out of production routes. Article-specific diagrams and images belong under `public/images/writing/<article-slug>/`.
+
 ## Future sections
 
-The project is ready to grow through Astro's file-based routes. Add future pages under `src/pages/` for:
+The project is ready to grow through Astro's file-based routes. The writing section is live; future sections can be added under `src/pages/` for:
 
-- `/writing`
 - `/projects`
 - `/about`
 - `/speaking`

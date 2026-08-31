@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="d4-title d4-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d4-title">Recall and query cost tradeoff</title>
+        <desc id="d4-desc">Recall improves as ANN exploration cost rises, but gains flatten. A balanced operating point is selected at the knee of the curve rather than at maximum cost.</desc>
+        <line class="connector" x1="54" y1="226" x2="334" y2="226" />
+        <line class="connector" x1="54" y1="226" x2="54" y2="34" />
+        <text class="annotation" x="170" y="258">Query cost and latency →</text>
+        <text class="annotation" transform="translate(18 166) rotate(-90)">Recall@100 →</text>
+        <path class="guide" d="M54 178H334M54 116H334M54 58H334" />
+        <path class="connector-accent" d="M54 218C90 205 107 177 126 151S170 101 204 80 268 56 334 50" />
+        <circle cx="95" cy="193" r="6" fill="#9187ff" />
+        <circle cx="180" cy="94" r="7" fill="#79d49b" />
+        <circle cx="307" cy="53" r="6" fill="#d79468" />
+        <text class="label-left" x="73" y="180">Fast</text>
+        <text class="label-left" x="192" y="109">Balanced</text>
+        <text class="label-left" x="246" y="37">High recall</text>
+        <path class="guide" d="M180 94V226" />
+        <text class="annotation" x="190" y="137">Product latency budget</text>
+</svg>

@@ -1,0 +1,24 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  label?: string;
+}
+
+const { headings, label = 'In this article' } = Astro.props;
+const visibleHeadings = headings.filter(({ depth }) => depth === 2 || depth === 3);
+---
+
+<nav class="table-of-contents" aria-label={label}>
+  <p class="table-of-contents__title">{label}</p>
+  <ol>
+    {
+      visibleHeadings.map(({ depth, slug, text }) => (
+        <li class:list={{ 'table-of-contents__nested': depth === 3 }}>
+          <a href={`#${slug}`}>{text}</a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>

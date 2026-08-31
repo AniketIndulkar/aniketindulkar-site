@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="d2-title d2-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .connector-secondary { fill: none; stroke: #9187ff; stroke-width: 2; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="d2-title">Inverted index, doc values, and immutable segments</title>
+        <desc id="d2-desc">The inverted index maps terms to documents, doc values map documents to fields, and new documents become searchable through immutable segments that later merge.</desc>
+        <defs>
+          <marker id="d2-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+        </defs>
+        <text class="label-left" x="18" y="20">Two complementary access patterns</text>
+        <rect class="node-accent" x="18" y="34" width="150" height="82" rx="7" />
+        <text class="label" x="93" y="54">Inverted index</text>
+        <text class="label-small" x="93" y="73">term → documents</text>
+        <text class="label-small" x="93" y="92">“android” → 2, 8, 15, 21</text>
+        <rect class="node-secondary" x="192" y="34" width="150" height="82" rx="7" />
+        <text class="label" x="267" y="54">Doc values</text>
+        <text class="label-small" x="267" y="73">document → field value</text>
+        <text class="label-small" x="267" y="92">doc 21 → score: 8.4</text>
+        <text class="label-left" x="18" y="152">Near-real-time segment lifecycle</text>
+        <rect class="node" x="18" y="169" width="66" height="34" rx="6" />
+        <text class="label" x="51" y="190">New docs</text>
+        <path class="connector" d="M84 186H107" marker-end="url(#d2-arrow)" />
+        <rect class="node" x="110" y="169" width="66" height="34" rx="6" />
+        <text class="label" x="143" y="190">Buffer</text>
+        <path class="connector" d="M176 186H199" marker-end="url(#d2-arrow)" />
+        <rect class="node-accent" x="202" y="169" width="66" height="34" rx="6" />
+        <text class="label" x="235" y="190">Refresh</text>
+        <path class="connector" d="M268 186H291" marker-end="url(#d2-arrow)" />
+        <rect class="node-success" x="294" y="163" width="48" height="46" rx="6" />
+        <text class="label" x="318" y="181">New</text>
+        <text class="label-small" x="318" y="196">segment</text>
+        <rect class="node" x="32" y="240" width="72" height="36" rx="6" />
+        <rect class="node" x="118" y="240" width="72" height="36" rx="6" />
+        <rect class="node" x="204" y="240" width="72" height="36" rx="6" />
+        <text class="label" x="68" y="262">Segment A</text>
+        <text class="label" x="154" y="262">Segment B</text>
+        <text class="label" x="240" y="262">Segment C</text>
+        <path class="connector" d="M104 258H112M190 258H198M276 258H296" />
+        <rect class="node-secondary" x="298" y="232" width="44" height="52" rx="6" />
+        <text class="label" x="320" y="253">Merge</text>
+        <text class="label-small" x="320" y="269">reclaims</text>
+</svg>
