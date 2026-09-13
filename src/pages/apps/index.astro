@@ -1,0 +1,35 @@
+---
+import AppCard from '../../components/AppCard.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { apps } from '../../data/apps';
+
+const order = { live: 0, testing: 1, planned: 2 };
+const sorted = [...apps].sort((a, b) => order[a.status] - order[b.status]);
+
+const title = 'Apps — Aniket Indulkar';
+const description =
+  'Android apps designed, built and shipped end to end by Aniket Indulkar, with a bias towards on-device processing and offline-first behaviour.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="site-page">
+    <SiteHeader />
+
+    <main class="apps-index">
+      <header class="apps-index__header">
+        <p class="section-eyebrow">Apps</p>
+        <h1>Small, focused apps,<br />built end to end.</h1>
+        <p>
+          Products I design, build and ship myself. Mostly Android, and mostly concerned
+          with doing more on the device and less on someone else's server.
+        </p>
+      </header>
+
+      <section class="app-list" aria-labelledby="shipped-apps">
+        <h2 id="shipped-apps" class="visually-hidden">Shipped apps</h2>
+        {sorted.map((app) => <AppCard {...app} />)}
+      </section>
+    </main>
+  </div>
+</BaseLayout>

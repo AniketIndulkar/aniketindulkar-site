@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 356" role="img" aria-labelledby="a6-title a6-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .mono { fill: #6ed9ee; font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace; text-anchor: middle; }
+  .edge { fill: #6b7683; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="a6-title">Streaming from provider to Compose</title>
+  <desc id="a6-desc">The provider streams its own event grammar to the backend, which persists the full message server-side and re-emits a simplified product-shaped protocol of delta, tool, done and error events with periodic heartbeats. The app consumes these in a cancellable flow, appends deltas into a Room row, and Compose renders from the database on a sampled cadence rather than per token.</desc>
+  <defs>
+    <marker id="a6-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+  </defs>
+
+  <rect class="node-secondary" x="90" y="10" width="180" height="40" rx="6" />
+  <text class="label-small" x="180" y="29">Provider stream</text>
+  <text class="label-tiny" x="180" y="44">provider event grammar</text>
+
+  <path class="connector" d="M180 50V70" marker-end="url(#a6-arrow)" />
+
+  <rect class="node-success" x="70" y="70" width="220" height="44" rx="6" />
+  <text class="label-small" x="180" y="90">BFF relay</text>
+  <text class="label-tiny" x="180" y="105">persists the message server-side</text>
+
+  <path class="connector" d="M180 114V126" />
+  <path class="connector" d="M50 126H308" />
+  <path class="connector" d="M50 126V134" marker-end="url(#a6-arrow)" />
+  <path class="connector" d="M136 126V134" marker-end="url(#a6-arrow)" />
+  <path class="connector" d="M222 126V134" marker-end="url(#a6-arrow)" />
+  <path class="connector" d="M308 126V134" marker-end="url(#a6-arrow)" />
+
+  <rect class="node-accent" x="10" y="134" width="80" height="30" rx="6" />
+  <text class="mono" x="50" y="153">delta</text>
+  <rect class="node-accent" x="96" y="134" width="80" height="30" rx="6" />
+  <text class="mono" x="136" y="153">tool</text>
+  <rect class="node-accent" x="182" y="134" width="80" height="30" rx="6" />
+  <text class="mono" x="222" y="153">done</text>
+  <rect class="node-accent" x="268" y="134" width="80" height="30" rx="6" />
+  <text class="mono" x="308" y="153">error</text>
+
+  <path class="connector" d="M50 164V176M136 164V176M222 164V176M308 164V176" />
+  <path class="connector" d="M50 176H308" />
+  <path class="connector" d="M180 176V190" marker-end="url(#a6-arrow)" />
+
+  <rect class="node-accent" x="90" y="190" width="180" height="44" rx="6" />
+  <text class="label-small" x="180" y="210">App SSE client</text>
+  <text class="label-tiny" x="180" y="225">callbackFlow · cancellable</text>
+
+  <path class="connector" d="M180 234V254" marker-end="url(#a6-arrow)" />
+
+  <rect class="node" x="50" y="254" width="120" height="44" rx="6" />
+  <text class="label-small" x="110" y="274">Room row</text>
+  <text class="label-tiny" x="110" y="289">deltas appended</text>
+
+  <path class="connector" d="M170 276H190" marker-end="url(#a6-arrow)" />
+
+  <rect class="node" x="190" y="254" width="120" height="44" rx="6" />
+  <text class="label-small" x="250" y="274">Compose</text>
+  <text class="label-tiny" x="250" y="289">sampled every 80 ms</text>
+
+  <path class="guide" d="M10 314H350" />
+  <text class="label-tiny" x="180" y="332">Heartbeat every 15 s keeps mobile NATs from killing the stream</text>
+  <text class="label-tiny" x="180" y="348">Recovery, not resumption: reconnect with GET ?since=cursor</text>
+</svg>

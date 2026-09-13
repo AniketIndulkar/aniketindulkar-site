@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 402" role="img" aria-labelledby="a10-title a10-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .edge { fill: #6b7683; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-warning { fill: none; stroke: #d79468; stroke-width: 1.5; }
+</style>
+  <title id="a10-title">The evaluation gate on the prompt and model release train</title>
+  <desc id="a10-desc">A prompt or model change runs against a golden set in continuous integration. Three hard gates check class accuracy, invalid-output rate and the injection suite. Failing any gate blocks promotion. Passing all three sends the change to a canary channel covering a small share of organisations, where online metrics decide whether it is promoted or rolled back, all server-side and without an app release.</desc>
+  <defs>
+    <marker id="a10-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+    <marker id="a10-arrow-warning" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#d79468" /></marker>
+  </defs>
+
+  <rect class="node-secondary" x="90" y="10" width="180" height="38" rx="6" />
+  <text class="label-small" x="180" y="28">Prompt or model change</text>
+  <text class="label-tiny" x="180" y="43">a versioned artifact</text>
+
+  <path class="connector" d="M180 48V62" marker-end="url(#a10-arrow)" />
+
+  <rect class="node-accent" x="80" y="62" width="200" height="46" rx="6" />
+  <text class="label-small" x="180" y="82">Golden set in CI</text>
+  <text class="label-tiny" x="180" y="98">labelled + adversarial cases</text>
+
+  <path class="connector" d="M180 108V118" />
+  <path class="connector" d="M64 118H294" />
+  <path class="connector" d="M64 118V130" marker-end="url(#a10-arrow)" />
+  <path class="connector" d="M179 118V130" marker-end="url(#a10-arrow)" />
+  <path class="connector" d="M294 118V130" marker-end="url(#a10-arrow)" />
+
+  <rect class="node" x="10" y="130" width="108" height="44" rx="6" />
+  <text class="label-tiny" x="64" y="149">class</text>
+  <text class="label-tiny" x="64" y="164">accuracy</text>
+  <rect class="node" x="125" y="130" width="108" height="44" rx="6" />
+  <text class="label-tiny" x="179" y="149">invalid-output</text>
+  <text class="label-tiny" x="179" y="164">rate</text>
+  <rect class="node" x="240" y="130" width="108" height="44" rx="6" />
+  <text class="label-tiny" x="294" y="149">injection</text>
+  <text class="label-tiny" x="294" y="164">suite</text>
+
+  <path class="connector" d="M64 174V186M179 174V186M294 174V186" />
+  <path class="connector" d="M64 186H294" />
+  <path class="connector" d="M180 186V196" marker-end="url(#a10-arrow)" />
+
+  <rect class="node" x="110" y="196" width="140" height="32" rx="6" />
+  <text class="label-small" x="180" y="216">all gates green?</text>
+
+  <path class="connector-warning" d="M110 212H90" marker-end="url(#a10-arrow-warning)" />
+  <rect class="node-warning" x="10" y="192" width="80" height="40" rx="6" />
+  <text class="label-tiny" x="50" y="211">Blocked</text>
+  <text class="label-tiny" x="50" y="225">no promotion</text>
+
+  <path class="connector" d="M180 228V250" marker-end="url(#a10-arrow)" />
+  <text class="edge" x="204" y="243">pass</text>
+
+  <rect class="node-accent" x="80" y="250" width="200" height="46" rx="6" />
+  <text class="label-small" x="180" y="270">Canary channel</text>
+  <text class="label-tiny" x="180" y="286">a small share of orgs</text>
+
+  <path class="connector" d="M180 296V318" marker-end="url(#a10-arrow)" />
+
+  <rect class="node-success" x="80" y="318" width="200" height="46" rx="6" />
+  <text class="label-small" x="180" y="338">Promote or roll back</text>
+  <text class="label-tiny" x="180" y="354">in seconds, no app release</text>
+
+  <text class="label-tiny" x="180" y="386">Offline evals predict. Online metrics confirm.</text>
+</svg>

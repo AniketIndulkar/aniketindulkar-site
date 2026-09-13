@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 536" role="img" aria-labelledby="a2-title a2-desc">
+  <style>
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .legend { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .step { fill: #6b7683; font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end; }
+</style>
+  <title id="a2-title">The complete request lifecycle</title>
+  <desc id="a2-desc">Nine ordered steps for one interactive request. The Android app raises a UI event, persists the outbound message to Room and posts it with a user token and idempotency key. The backend verifies and authorises the caller, assembles context under a token budget, calls the model with tools and a cache breakpoint, runs any tools as the calling user inside a bounded loop, then relays stream deltas back into Room for Compose to render, finishing with usage recorded and cancellation that stops upstream spend.</desc>
+  <defs>
+    <marker id="a2-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+  </defs>
+
+  <rect class="node-accent" x="10" y="10" width="12" height="12" rx="3" />
+  <text class="legend" x="28" y="20">Android app</text>
+  <rect class="node-success" x="122" y="10" width="12" height="12" rx="3" />
+  <text class="legend" x="140" y="20">BFF</text>
+  <rect class="node-secondary" x="188" y="10" width="12" height="12" rx="3" />
+  <text class="legend" x="206" y="20">AI provider</text>
+
+  <text class="step" x="46" y="61">1</text>
+  <rect class="node-accent" x="55" y="36" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="55">UI event</text>
+  <text class="label-tiny" x="180" y="70">ViewModel launches a coroutine</text>
+  <path class="connector" d="M180 76V88" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="113">2</text>
+  <rect class="node-accent" x="55" y="88" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="107">Repository writes to Room</text>
+  <text class="label-tiny" x="180" y="122">status SENDING · survives process death</text>
+  <path class="connector" d="M180 128V140" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="165">3</text>
+  <rect class="node-accent" x="55" y="140" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="159">POST /messages</text>
+  <text class="label-tiny" x="180" y="174">JWT · attestation · idempotency key</text>
+  <path class="connector" d="M180 180V192" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="217">4</text>
+  <rect class="node-success" x="55" y="192" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="211">Edge checks</text>
+  <text class="label-tiny" x="180" y="226">authn · authz · rate limit · validate</text>
+  <path class="connector" d="M180 232V244" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="269">5</text>
+  <rect class="node-success" x="55" y="244" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="263">Context assembly</text>
+  <text class="label-tiny" x="180" y="278">prompt version + budgeted history</text>
+  <path class="connector" d="M180 284V296" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="321">6</text>
+  <rect class="node-secondary" x="55" y="296" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="315">Model call</text>
+  <text class="label-tiny" x="180" y="330">tools · max_tokens · cache prefix</text>
+  <path class="connector" d="M180 336V348" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="373">7</text>
+  <rect class="node-success" x="55" y="348" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="367">Tool loop</text>
+  <text class="label-tiny" x="180" y="382">runs as the calling user · bounded</text>
+  <path class="connector" d="M180 388V400" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="425">8</text>
+  <rect class="node-accent" x="55" y="400" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="419">Stream relay</text>
+  <text class="label-tiny" x="180" y="434">SSE deltas → Room → Compose</text>
+  <path class="connector" d="M180 440V452" marker-end="url(#a2-arrow)" />
+
+  <text class="step" x="46" y="477">9</text>
+  <rect class="node-accent" x="55" y="452" width="250" height="40" rx="6" />
+  <text class="label" x="180" y="471">Completion</text>
+  <text class="label-tiny" x="180" y="486">usage recorded · cancel stops spend</text>
+
+  <text class="label-tiny" x="180" y="516">One trace spans steps 3 to 9</text>
+</svg>

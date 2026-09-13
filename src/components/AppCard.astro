@@ -1,0 +1,73 @@
+---
+import { statusLabels, type AppEntry } from '../data/apps';
+
+type Props = AppEntry;
+
+const {
+  name,
+  tagline,
+  description,
+  status,
+  platform,
+  category,
+  href,
+  storeLabel,
+  icon,
+  features,
+} = Astro.props;
+
+// A card is only a link when the listing is actually public. Closed-testing
+// apps render as a plain container so there is no dead link on the page.
+const Wrapper = href ? 'a' : 'div';
+const linkProps = href ? { href, target: '_blank', rel: 'noreferrer' } : {};
+---
+
+<article class="app-card">
+  <Wrapper class="app-card__link" {...linkProps}>
+    <div class="app-card__aside">
+      {
+        icon ? (
+          <img class="app-card__icon" src={icon} alt="" width="88" height="88" decoding="async" />
+        ) : (
+          <span class="app-card__icon app-card__icon--fallback" aria-hidden="true">
+            {name.charAt(0)}
+          </span>
+        )
+      }
+
+      <p class:list={['app-status', `app-status--${status}`]}>
+        <span class="app-status__signal" aria-hidden="true"></span>
+        {statusLabels[status]}
+      </p>
+    </div>
+
+    <div class="app-card__body">
+      <h2>{name}</h2>
+      <p class="app-card__tagline">{tagline}</p>
+      <p class="app-card__description">{description}</p>
+    </div>
+
+    <div class="app-card__footer">
+      <ul class="topic-list" aria-label={`${name} highlights`}>
+        {features.map((feature) => <li>{feature}</li>)}
+      </ul>
+
+      {
+        href ? (
+          <span class="app-card__store">
+            <span>{storeLabel}</span>
+            <span class="app-card__arrow" aria-hidden="true">↗</span>
+          </span>
+        ) : (
+          <span class="app-card__store app-card__store--muted">Link when public</span>
+        )
+      }
+    </div>
+
+    <p class="app-card__meta">
+      <span>{platform}</span>
+      <span aria-hidden="true">·</span>
+      <span>{category}</span>
+    </p>
+  </Wrapper>
+</article>

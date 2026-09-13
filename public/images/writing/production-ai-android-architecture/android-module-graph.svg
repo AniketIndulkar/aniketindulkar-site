@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 286" role="img" aria-labelledby="a4-title a4-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #f2f2ec; font: 600 11.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .tier { fill: #6b7683; font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="a4-title">Module structure and dependency direction</title>
+  <desc id="a4-desc">The app module wires navigation and dependency injection above four feature modules for issues, triage, assistant and drafting. Those depend on shared core modules for ui, domain, data, database, network, auth and analytics. Dependencies flow downward only, and the assistant feature has no knowledge of the AI provider.</desc>
+  <defs>
+    <marker id="a4-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+  </defs>
+
+  <text class="tier" x="10" y="20">app</text>
+  <rect class="node-secondary" x="130" y="10" width="100" height="30" rx="6" />
+  <text class="label" x="180" y="30">app</text>
+  <text class="label-tiny" x="180" y="54">navigation · DI wiring</text>
+
+  <path class="connector" d="M180 60V68H50V78M180 60V68H138V78M180 60V68H222V78M180 60V68H310V78" marker-end="url(#a4-arrow)" />
+
+  <text class="tier" x="10" y="98">feature</text>
+  <rect class="node-accent" x="10" y="78" width="80" height="30" rx="6" />
+  <text class="label-small" x="50" y="97">issues</text>
+  <rect class="node-accent" x="98" y="78" width="80" height="30" rx="6" />
+  <text class="label-small" x="138" y="97">triage</text>
+  <rect class="node-accent" x="186" y="78" width="80" height="30" rx="6" />
+  <text class="label-small" x="226" y="97">assistant</text>
+  <rect class="node-accent" x="274" y="78" width="80" height="30" rx="6" />
+  <text class="label-small" x="314" y="97">drafting</text>
+
+  <path class="connector" d="M50 108V120H180M138 108V120H180M226 108V120H180M314 108V120H180M180 120V132" marker-end="url(#a4-arrow)" />
+
+  <text class="tier" x="10" y="152">core</text>
+  <rect class="node" x="10" y="132" width="80" height="30" rx="6" />
+  <text class="label-small" x="50" y="151">ui</text>
+  <rect class="node" x="98" y="132" width="80" height="30" rx="6" />
+  <text class="label-small" x="138" y="151">domain</text>
+  <rect class="node" x="186" y="132" width="80" height="30" rx="6" />
+  <text class="label-small" x="226" y="151">data</text>
+  <rect class="node" x="274" y="132" width="80" height="30" rx="6" />
+  <text class="label-small" x="314" y="151">database</text>
+
+  <rect class="node" x="54" y="170" width="80" height="30" rx="6" />
+  <text class="label-small" x="94" y="189">network</text>
+  <rect class="node" x="142" y="170" width="80" height="30" rx="6" />
+  <text class="label-small" x="182" y="189">auth</text>
+  <rect class="node" x="230" y="170" width="80" height="30" rx="6" />
+  <text class="label-small" x="270" y="189">analytics</text>
+
+  <path class="guide" d="M10 218H350" />
+  <text class="label-tiny" x="180" y="238">Dependencies flow downward only</text>
+  <text class="label-tiny" x="180" y="256">core:domain holds no Android types</text>
+  <text class="label-tiny" x="180" y="274">feature:assistant does not know the provider exists</text>
+</svg>

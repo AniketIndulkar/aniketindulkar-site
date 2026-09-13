@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 302" role="img" aria-labelledby="a5-title a5-desc">
+  <style>
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .edge { fill: #6b7683; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-warning { fill: none; stroke: #d79468; stroke-width: 1.5; }
+</style>
+  <title id="a5-title">Two-layer validation of model output</title>
+  <desc id="a5-desc">Schema-constrained decoding produces model output that passes through deserialisation checks for shape, enums and types, then a second layer of domain invariants. Either failure triggers exactly one repair retry with the validation error appended; if that also fails, the request lands on a deterministic fallback path and is recorded for evaluation. Only output passing both layers is persisted and rendered.</desc>
+  <defs>
+    <marker id="a5-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+    <marker id="a5-arrow-warning" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#d79468" /></marker>
+  </defs>
+
+  <rect class="node-secondary" x="110" y="10" width="170" height="36" rx="6" />
+  <text class="label-small" x="195" y="27">Model output</text>
+  <text class="label-tiny" x="195" y="41">schema-constrained decoding</text>
+
+  <path class="connector" d="M195 46V66" marker-end="url(#a5-arrow)" />
+
+  <rect class="node-accent" x="90" y="66" width="210" height="44" rx="6" />
+  <text class="label-small" x="195" y="86">Layer 1 · deserialisation</text>
+  <text class="label-tiny" x="195" y="101">shape · enums · types</text>
+
+  <path class="connector" d="M195 110V132" marker-end="url(#a5-arrow)" />
+  <text class="edge" x="202" y="126">parses</text>
+
+  <rect class="node-accent" x="90" y="132" width="210" height="44" rx="6" />
+  <text class="label-small" x="195" y="152">Layer 2 · domain invariants</text>
+  <text class="label-tiny" x="195" y="167">hazard vs urgency · lengths</text>
+
+  <path class="connector" d="M195 176V210" marker-end="url(#a5-arrow)" />
+  <text class="edge" x="202" y="196">makes sense</text>
+
+  <path class="connector-warning" d="M90 88H64V210" marker-end="url(#a5-arrow-warning)" />
+  <path class="connector-warning" d="M90 154H64" marker-end="url(#a5-arrow-warning)" />
+
+  <rect class="node-warning" x="10" y="210" width="108" height="56" rx="6" />
+  <text class="label-small" x="64" y="234">One repair retry</text>
+  <text class="label-tiny" x="64" y="251">error appended</text>
+
+  <rect class="node-success" x="126" y="210" width="108" height="56" rx="6" />
+  <text class="label-small" x="180" y="234">Valid</text>
+  <text class="label-tiny" x="180" y="251">persist + render</text>
+
+  <rect class="node-warning" x="242" y="210" width="108" height="56" rx="6" />
+  <text class="label-small" x="296" y="234">Fallback path</text>
+  <text class="label-tiny" x="296" y="251">manual queue · logged</text>
+
+  <path class="connector-warning" d="M40 210V28H110" marker-end="url(#a5-arrow-warning)" />
+  <path class="connector-warning" d="M118 238H242" marker-end="url(#a5-arrow-warning)" />
+  <text class="edge" x="130" y="232">retry fails</text>
+
+  <text class="label-tiny" x="180" y="290">Never loop retries: one repair attempt, then determinism</text>
+</svg>

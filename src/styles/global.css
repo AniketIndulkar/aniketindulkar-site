@@ -1011,6 +1011,260 @@ img {
   text-decoration: none;
 }
 
+/* Apps ------------------------------------------------------------------- */
+
+.apps-index {
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  padding: clamp(5rem, 11vw, 9rem) var(--page-gutter) 7rem;
+}
+
+.apps-index__header {
+  max-width: 59rem;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.apps-index__header h1 {
+  max-width: 58rem;
+  margin: 0;
+  font-size: clamp(2.7rem, 6.3vw, 5.8rem);
+  font-weight: 535;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.apps-index__header > p:last-child {
+  max-width: 42rem;
+  margin: 2.25rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  line-height: 1.75;
+}
+
+.app-list {
+  border-top: 1px solid var(--line);
+}
+
+.app-card {
+  border-bottom: 1px solid var(--line);
+}
+
+.app-card__link {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1.75rem clamp(2rem, 6vw, 6rem);
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  text-decoration: none;
+}
+
+.app-card__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.app-card__body {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.app-card__footer {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.app-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+  color: var(--quiet);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+}
+
+.app-card__icon {
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  background: linear-gradient(150deg, rgba(110, 217, 238, 0.1), rgba(145, 135, 255, 0.1));
+  object-fit: cover;
+}
+
+.app-card__icon--fallback {
+  color: #dce5ec;
+  font-size: 1.5rem;
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.app-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.app-status__signal {
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+}
+
+.app-status--live {
+  border-color: rgba(121, 212, 155, 0.22);
+  background: rgba(121, 212, 155, 0.05);
+  color: #a9b9ad;
+}
+
+.app-status--live .app-status__signal {
+  background: var(--green);
+  box-shadow: 0 0 0 0.18rem rgba(121, 212, 155, 0.09);
+}
+
+.app-status--testing {
+  border-color: rgba(110, 217, 238, 0.22);
+  background: rgba(110, 217, 238, 0.05);
+  color: #9fb3bd;
+}
+
+.app-status--testing .app-status__signal {
+  background: var(--cyan);
+  box-shadow: 0 0 0 0.18rem rgba(110, 217, 238, 0.09);
+}
+
+.app-status--planned {
+  border-color: rgba(145, 135, 255, 0.22);
+  background: rgba(145, 135, 255, 0.05);
+  color: #a9a6c4;
+}
+
+.app-status--planned .app-status__signal {
+  background: var(--violet);
+  box-shadow: 0 0 0 0.18rem rgba(145, 135, 255, 0.09);
+}
+
+.app-card__body h2 {
+  max-width: 48rem;
+  margin: 0;
+  color: #e7ebe8;
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+  font-weight: 540;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  text-wrap: balance;
+  transition: color 180ms ease;
+}
+
+.app-card__tagline {
+  max-width: 43rem;
+  margin: 0.9rem 0 0;
+  color: #c2ccd6;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.app-card__description {
+  max-width: 43rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.app-card__store {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--line);
+  color: #d8e0e8;
+  font-size: 0.8rem;
+  font-weight: 560;
+  white-space: nowrap;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.app-card__store--muted {
+  border-bottom-color: transparent;
+  color: var(--quiet);
+  font-size: 0.64rem;
+  font-weight: 620;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.app-card__arrow {
+  color: var(--cyan);
+  font-size: 0.95rem;
+  transition: transform 180ms ease;
+}
+
+a.app-card__link:hover .app-card__body h2 {
+  color: #fff;
+}
+
+a.app-card__link:hover .app-card__store {
+  border-color: rgba(110, 217, 238, 0.65);
+  color: #fff;
+}
+
+a.app-card__link:hover .app-card__arrow {
+  transform: translate(0.14rem, -0.14rem);
+}
+
+a.app-card__link:focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid var(--cyan);
+  outline-offset: 0.35rem;
+}
+
+.status--link {
+  text-decoration: none;
+}
+
+.status--link:hover {
+  border-color: rgba(121, 212, 155, 0.45);
+  color: #d7e4da;
+}
+
+.status__arrow {
+  color: var(--green);
+  font-size: 0.72rem;
+  transition: transform 180ms ease;
+}
+
+.status--link:hover .status__arrow {
+  transform: translate(0.1rem, -0.1rem);
+}
+
+.status--link:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 0.35rem;
+}
+
 @media (max-width: 64rem) {
   .article-layout {
     grid-template-columns: minmax(0, 46rem);
@@ -1122,6 +1376,50 @@ img {
 
   .post-card__footer {
     grid-column: 1;
+  }
+
+  .apps-index {
+    padding-top: 4.5rem;
+    padding-bottom: 5rem;
+  }
+
+  .apps-index__header {
+    padding-bottom: 4rem;
+  }
+
+  .apps-index__header h1 {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+  }
+
+  .app-card__link {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+    padding: 2.5rem 0;
+  }
+
+  .app-card__aside {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .app-card__body {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .app-card__meta {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .app-card__footer {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    grid-column: 1;
+    grid-row: 4;
   }
 
   .article-page {

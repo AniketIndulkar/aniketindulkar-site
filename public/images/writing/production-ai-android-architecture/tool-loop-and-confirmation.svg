@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" role="img" aria-labelledby="a8-title a8-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .edge { fill: #6b7683; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-warning { fill: none; stroke: #d79468; stroke-width: 1.5; }
+</style>
+  <title id="a8-title">The bounded tool loop and the write-confirmation boundary</title>
+  <desc id="a8-desc">A model turn emits a tool call which is split by kind. Read tools execute immediately with the calling user's own authorisation, return a tool result and feed back into the model inside a loop capped at five iterations. Write tools do not execute: they create a pending action that the app renders as a native confirmation card, and execution happens only on an explicit confirm request carrying an idempotency key and an audit record.</desc>
+  <defs>
+    <marker id="a8-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+    <marker id="a8-arrow-warning" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#d79468" /></marker>
+  </defs>
+
+  <rect class="node-secondary" x="105" y="10" width="150" height="40" rx="6" />
+  <text class="label-small" x="180" y="29">Model turn</text>
+  <text class="label-tiny" x="180" y="44">emits tool_use</text>
+
+  <path class="connector" d="M180 50V66" marker-end="url(#a8-arrow)" />
+
+  <rect class="node" x="110" y="66" width="140" height="30" rx="6" />
+  <text class="label-small" x="180" y="86">read or write?</text>
+
+  <path class="connector" d="M180 96V108H98V120" marker-end="url(#a8-arrow)" />
+  <path class="connector-warning" d="M180 96V108H262V120" marker-end="url(#a8-arrow-warning)" />
+
+  <rect class="node-accent" x="26" y="120" width="144" height="46" rx="6" />
+  <text class="label-small" x="98" y="140">Read tool</text>
+  <text class="label-tiny" x="98" y="156">runs as the caller</text>
+  <path class="connector" d="M98 166V182" marker-end="url(#a8-arrow)" />
+  <rect class="node-accent" x="26" y="182" width="144" height="46" rx="6" />
+  <text class="label-small" x="98" y="202">tool_result</text>
+  <text class="label-tiny" x="98" y="218">appended to messages</text>
+  <path class="connector" d="M98 228V246H16V30H105" marker-end="url(#a8-arrow)" />
+  <text class="edge" x="56" y="260">loop</text>
+
+  <rect class="node-warning" x="190" y="120" width="144" height="46" rx="6" />
+  <text class="label-small" x="262" y="140">Write tool</text>
+  <text class="label-tiny" x="262" y="156">pending action</text>
+  <path class="connector-warning" d="M262 166V182" marker-end="url(#a8-arrow-warning)" />
+  <rect class="node-warning" x="190" y="182" width="144" height="46" rx="6" />
+  <text class="label-small" x="262" y="202">Confirmation card</text>
+  <text class="label-tiny" x="262" y="218">outside the model</text>
+  <path class="connector-warning" d="M262 228V244" marker-end="url(#a8-arrow-warning)" />
+  <rect class="node-warning" x="190" y="244" width="144" height="46" rx="6" />
+  <text class="label-small" x="262" y="264">POST /confirm</text>
+  <text class="label-tiny" x="262" y="280">idempotency + audit</text>
+
+  <text class="label-tiny" x="180" y="312">Capped at five iterations, then an honest failure</text>
+  <text class="label-tiny" x="180" y="326">beats a runaway loop</text>
+</svg>

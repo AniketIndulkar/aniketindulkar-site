@@ -1,12 +1,17 @@
 ---
 import SystemVisual from '../components/SystemVisual.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { apps } from '../data/apps';
+
+// Derived from the apps data so the hero badge cannot go stale again.
+const featured = apps.find((app) => app.status === 'live' && app.href);
 
 const title = 'Aniket Indulkar — Senior Android Engineer';
 const description =
   'Aniket Indulkar is a Senior Android Engineer writing and building around Android performance, mobile architecture and on-device AI.';
 
 const socialLinks = [
+  { label: 'Apps', href: '/apps/', external: false },
   { label: 'Writing', href: '/writing/', external: false },
   { label: 'GitHub', href: 'https://github.com/AniketIndulkar', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/', external: true },
@@ -33,7 +38,24 @@ const socialLinks = [
         </p>
 
         <div class="hero__footer">
-          <p class="status"><span class="status__signal"></span>New site in progress</p>
+          {
+            featured ? (
+              <a class="status status--link" href={featured.href} target="_blank" rel="noreferrer">
+                <span class="status__signal" aria-hidden="true" />
+                <span>
+                  {featured.name} is live on {featured.storeLabel}
+                </span>
+                <span class="status__arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ) : (
+              <p class="status">
+                <span class="status__signal" aria-hidden="true" />
+                Building
+              </p>
+            )
+          }
 
           <nav class="social-links" aria-label="External profiles">
             {
