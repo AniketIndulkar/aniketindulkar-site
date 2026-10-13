@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 316" role="img" aria-labelledby="a7-title a7-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .legend { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .breakpoint { fill: none; stroke: #6ed9ee; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .breakpoint-label { fill: #6ed9ee; font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+</style>
+  <title id="a7-title">The per-turn context budget</title>
+  <desc id="a7-desc">A context window assembled in four ordered segments. The system prompt with tool schemas and the organisation context form a stable cached prefix ending at a cache control breakpoint. Below it sit the variable segments: a rolling summary of older turns, regenerated periodically, and the most recent turns plus the new user message, which change every turn. Ordering volatile content last is what keeps the cached prefix byte-identical.</desc>
+
+  <rect class="node-accent" x="10" y="10" width="12" height="12" rx="3" />
+  <text class="legend" x="28" y="20">cached prefix</text>
+  <rect class="node" x="150" y="10" width="12" height="12" rx="3" />
+  <text class="legend" x="168" y="20">variable per turn</text>
+
+  <rect class="node-accent" x="76" y="40" width="274" height="52" rx="6" />
+  <text class="label-small" x="213" y="63">system prompt + tool schemas</text>
+  <text class="label-tiny" x="213" y="80">stable per prompt version</text>
+
+  <rect class="node-accent" x="76" y="96" width="274" height="48" rx="6" />
+  <text class="label-small" x="213" y="117">org and property context</text>
+  <text class="label-tiny" x="213" y="134">stable per conversation</text>
+
+  <text class="breakpoint-label" x="213" y="155">cache_control breakpoint</text>
+  <path class="breakpoint" d="M76 160H350" />
+
+  <rect class="node" x="76" y="168" width="274" height="46" rx="6" />
+  <text class="label-small" x="213" y="189">rolling summary of older turns</text>
+  <text class="label-tiny" x="213" y="205">regenerated periodically</text>
+
+  <rect class="node" x="76" y="222" width="274" height="52" rx="6" />
+  <text class="label-small" x="213" y="245">last N turns + new message</text>
+  <text class="label-tiny" x="213" y="262">changes every turn</text>
+
+  <text class="label-tiny" x="180" y="294">Volatile content last, or the prefix stops matching</text>
+  <text class="label-tiny" x="180" y="310">and every turn pays full price for the system prompt</text>
+</svg>

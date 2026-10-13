@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 566" role="img" aria-labelledby="a1-title a1-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .panel { fill: #080d14; stroke: #273342; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-left { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .annotation-end { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #6ed9ee; stroke-width: 2; }
+  .boundary { fill: none; stroke: #d79468; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .boundary-label { fill: #d79468; font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+</style>
+  <title id="a1-title">End-to-end architecture across two trust boundaries</title>
+  <desc id="a1-desc">An untrusted Android app of feature modules over domain, data, database and network layers. It crosses an internet trust boundary carrying a user token and a device attestation token into a trusted backend-for-frontend, which authenticates, authorises, rate limits and validates before an orchestrator assembles context and calls the AI provider across a second trust boundary using a server-held key.</desc>
+  <defs>
+    <marker id="a1-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+    <marker id="a1-arrow-accent" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#6ed9ee" /></marker>
+  </defs>
+
+  <rect class="panel" x="8" y="8" width="344" height="220" rx="8" />
+  <text class="label-left" x="18" y="26">Android app</text>
+  <text class="annotation-end" x="342" y="26">untrusted device</text>
+
+  <rect class="node" x="18" y="34" width="104" height="30" rx="6" />
+  <text class="label-small" x="70" y="53">triage</text>
+  <rect class="node" x="130" y="34" width="104" height="30" rx="6" />
+  <text class="label-small" x="182" y="53">assistant</text>
+  <rect class="node" x="242" y="34" width="104" height="30" rx="6" />
+  <text class="label-small" x="294" y="53">issues</text>
+
+  <path class="connector" d="M70 64V70H182M294 64V70H182M182 64V74" marker-end="url(#a1-arrow)" />
+
+  <rect class="node" x="90" y="74" width="180" height="40" rx="6" />
+  <text class="label" x="180" y="92">core:domain</text>
+  <text class="label-tiny" x="180" y="107">use cases · pure Kotlin</text>
+
+  <path class="connector" d="M180 114V124" marker-end="url(#a1-arrow)" />
+
+  <rect class="node-accent" x="90" y="124" width="180" height="40" rx="6" />
+  <text class="label" x="180" y="142">core:data</text>
+  <text class="label-tiny" x="180" y="157">repositories · single source of truth</text>
+
+  <path class="connector" d="M180 164V170H94V176M180 164V170H264V176" marker-end="url(#a1-arrow)" />
+
+  <rect class="node" x="18" y="176" width="152" height="40" rx="6" />
+  <text class="label-small" x="94" y="194">core:database</text>
+  <text class="label-tiny" x="94" y="209">Room cache</text>
+  <rect class="node" x="182" y="176" width="164" height="40" rx="6" />
+  <text class="label-small" x="264" y="194">core:network</text>
+  <text class="label-tiny" x="264" y="209">OkHttp SSE · interceptors</text>
+
+  <path class="connector-accent" d="M264 216V296" marker-end="url(#a1-arrow-accent)" />
+  <path class="boundary" d="M8 252H352" />
+  <text class="boundary-label" x="180" y="246">trust boundary · TLS · user JWT + device attestation</text>
+
+  <rect class="panel" x="8" y="268" width="344" height="188" rx="8" />
+  <text class="label-left" x="18" y="286">BFF</text>
+  <text class="annotation-end" x="342" y="286">the only trusted tier</text>
+
+  <rect class="node-success" x="18" y="296" width="326" height="26" rx="6" />
+  <text class="label-small" x="181" y="313">verify JWT → authorise org → rate limit → validate</text>
+
+  <path class="connector" d="M181 322V336" marker-end="url(#a1-arrow)" />
+
+  <rect class="node" x="18" y="336" width="98" height="52" rx="6" />
+  <text class="label-small" x="67" y="358">Prompt</text>
+  <text class="label-small" x="67" y="374">registry</text>
+  <rect class="node-accent" x="126" y="336" width="112" height="52" rx="6" />
+  <text class="label-small" x="182" y="358">AI</text>
+  <text class="label-small" x="182" y="374">orchestrator</text>
+  <rect class="node-warning" x="248" y="336" width="96" height="52" rx="6" />
+  <text class="label-small" x="296" y="358">Tool</text>
+  <text class="label-small" x="296" y="374">executor</text>
+
+  <path class="connector" d="M116 362H126" marker-end="url(#a1-arrow)" />
+  <path class="connector" d="M238 362H248" marker-end="url(#a1-arrow)" />
+
+  <rect class="node" x="18" y="400" width="110" height="44" rx="6" />
+  <text class="label-small" x="73" y="419">Postgres</text>
+  <text class="label-tiny" x="73" y="434">record of truth</text>
+  <rect class="node" x="234" y="400" width="110" height="44" rx="6" />
+  <text class="label-small" x="289" y="419">Observability</text>
+  <text class="label-tiny" x="289" y="434">traces · cost</text>
+
+  <path class="connector-accent" d="M182 388V496" marker-end="url(#a1-arrow-accent)" />
+  <path class="boundary" d="M8 480H352" />
+  <text class="boundary-label" x="180" y="474">trust boundary · server-held API key</text>
+
+  <rect class="node-secondary" x="70" y="496" width="220" height="58" rx="7" />
+  <text class="label" x="180" y="521">AI provider</text>
+  <text class="label-tiny" x="180" y="538">primary API · failover channel</text>
+</svg>
