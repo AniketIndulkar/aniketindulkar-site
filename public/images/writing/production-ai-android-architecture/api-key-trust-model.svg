@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 302" role="img" aria-labelledby="a3-title a3-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 13.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .item { fill: #a9b3bf; font: 500 11.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: start; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .bad { fill: #d79468; font: 600 11.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .good { fill: #79d49b; font: 600 11.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+</style>
+  <title id="a3-title">Why a provider key cannot ship in the APK</title>
+  <desc id="a3-desc">A provider API key placed in the APK is recovered by decompilers, runtime hooking and an attacker-controlled proxy, so the blast radius is unbounded and billed to you. A short-lived user-scoped token plus device attestation is recoverable too, but limits the blast radius to one user's quota and can be revoked from the server.</desc>
+  <defs>
+    <marker id="a3-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+  </defs>
+
+  <rect class="node-warning" x="10" y="10" width="164" height="30" rx="6" />
+  <text class="label" x="92" y="30">Provider key in APK</text>
+  <text class="label-tiny" x="92" y="58">recovered by</text>
+  <text class="item" x="22" y="82">· apktool and JADX</text>
+  <text class="item" x="22" y="104">· Frida hooks on HTTP</text>
+  <text class="item" x="22" y="126">· attacker-owned proxy CA</text>
+  <text class="item" x="22" y="148">· reading it off the wire</text>
+  <text class="label-tiny" x="92" y="174">certificate pinning does</text>
+  <text class="label-tiny" x="92" y="188">not help: they own the device</text>
+  <path class="connector" d="M92 198V216" marker-end="url(#a3-arrow)" />
+  <rect class="node-warning" x="10" y="216" width="164" height="66" rx="6" />
+  <text class="bad" x="92" y="238">Unbounded blast radius</text>
+  <text class="label-tiny" x="92" y="256">your money · your rate limits</text>
+  <text class="label-tiny" x="92" y="271">rotation needs an app update</text>
+
+  <rect class="node-success" x="186" y="10" width="164" height="30" rx="6" />
+  <text class="label" x="268" y="30">Short-lived user token</text>
+  <text class="label-tiny" x="268" y="58">still extractable, but</text>
+  <text class="item" x="198" y="82">· scoped to one user</text>
+  <text class="item" x="198" y="104">· short expiry, refreshed</text>
+  <text class="item" x="198" y="126">· revocable server-side</text>
+  <text class="item" x="198" y="148">· paired with attestation</text>
+  <text class="label-tiny" x="268" y="174">the server stays the only</text>
+  <text class="label-tiny" x="268" y="188">holder of the provider key</text>
+  <path class="connector" d="M268 198V216" marker-end="url(#a3-arrow)" />
+  <rect class="node-success" x="186" y="216" width="164" height="66" rx="6" />
+  <text class="good" x="268" y="238">Blast radius: one quota</text>
+  <text class="label-tiny" x="268" y="256">per-user attribution kept</text>
+  <text class="label-tiny" x="268" y="271">revoke without shipping an APK</text>
+</svg>

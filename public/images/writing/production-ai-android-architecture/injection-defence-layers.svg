@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 336" role="img" aria-labelledby="a9-title a9-desc">
+  <style>
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .label-small { fill: #f2f2ec; font: 600 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-tiny { fill: #a9b3bf; font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .pill-good { fill: #79d49b; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .pill-warn { fill: #d79468; font: 600 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+</style>
+  <title id="a9-title">Prompt-injection defence in depth, ordered by how much each layer earns trust</title>
+  <desc id="a9-desc">Attacker-influenced text reaches the context window. Four defensive layers are ranked by trustworthiness. Blast-radius controls and output handling are enforced in code outside the model and can be relied on. Segregation of untrusted text and detection heuristics raise the bar but guarantee nothing. No layer reduces the probability of a successful injection to zero, so the architecture is designed for containment.</desc>
+  <defs>
+    <marker id="a9-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8f9aa7" /></marker>
+  </defs>
+
+  <rect class="node-secondary" x="62" y="8" width="288" height="30" rx="6" />
+  <text class="label-small" x="206" y="28">Attacker-influenced text enters the context</text>
+  <path class="connector" d="M206 38V50" marker-end="url(#a9-arrow)" />
+
+  <text class="pill-good" x="32" y="79">rely on</text>
+  <rect class="node-success" x="62" y="50" width="288" height="52" rx="6" />
+  <text class="label-small" x="206" y="73">Blast-radius controls</text>
+  <text class="label-tiny" x="206" y="90">user-scoped authz · confirmed writes</text>
+
+  <text class="pill-good" x="32" y="139">rely on</text>
+  <rect class="node-success" x="62" y="110" width="288" height="52" rx="6" />
+  <text class="label-small" x="206" y="133">Output handling</text>
+  <text class="label-tiny" x="206" y="150">validate · sanitise · never auto-fetch</text>
+
+  <text class="pill-warn" x="32" y="199">assists</text>
+  <rect class="node-warning" x="62" y="170" width="288" height="52" rx="6" />
+  <text class="label-small" x="206" y="193">Segregation and spotlighting</text>
+  <text class="label-tiny" x="206" y="210">delimit untrusted text as data</text>
+
+  <text class="pill-warn" x="32" y="259">assists</text>
+  <rect class="node-warning" x="62" y="230" width="288" height="52" rx="6" />
+  <text class="label-small" x="206" y="253">Detection and monitoring</text>
+  <text class="label-tiny" x="206" y="270">classifiers · tool-rate and refusal spikes</text>
+
+  <text class="label-tiny" x="180" y="308">Every layer lowers probability. None reaches zero.</text>
+  <text class="label-tiny" x="180" y="326">If injection succeeds, the attacker holds what they already had.</text>
+</svg>
