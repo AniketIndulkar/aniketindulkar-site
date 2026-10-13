@@ -1,12 +1,17 @@
 ---
 import SystemVisual from '../components/SystemVisual.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { liveApps } from '../data/apps';
+
+// Derived from the apps data so the hero badge cannot go stale again.
+const liveCount = liveApps.length;
 
 const title = 'Aniket Indulkar — Senior Android Engineer';
 const description =
   'Aniket Indulkar is a Senior Android Engineer writing and building around Android performance, mobile architecture and on-device AI.';
 
 const socialLinks = [
+  { label: 'Apps', href: '/apps/', external: false },
   { label: 'Writing', href: '/writing/', external: false },
   { label: 'GitHub', href: 'https://github.com/AniketIndulkar', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/', external: true },
@@ -33,7 +38,19 @@ const socialLinks = [
         </p>
 
         <div class="hero__footer">
-          <p class="status"><span class="status__signal"></span>New site in progress</p>
+          {
+            liveCount > 0 && (
+              <a class="status status--link" href="/apps/">
+                <span class="status__signal" aria-hidden="true" />
+                <span>
+                  {liveCount} {liveCount === 1 ? 'app' : 'apps'} live on Google Play
+                </span>
+                <span class="status__arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            )
+          }
 
           <nav class="social-links" aria-label="External profiles">
             {
