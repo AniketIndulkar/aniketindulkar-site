@@ -10,6 +10,9 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <nav class="site-header__nav" aria-label="Primary navigation">
+      <a href="/apps/" aria-current={currentPath.startsWith('/apps') ? 'page' : undefined}>
+        Apps
+      </a>
       <a href="/writing/" aria-current={currentPath.startsWith('/writing') ? 'page' : undefined}>
         Writing
       </a>
