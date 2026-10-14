@@ -13,6 +13,14 @@ const writing = defineCollection({
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     topics: z.array(z.string()).default([]),
+    featured: z.boolean().default(false),
+    series: z
+      .object({
+        id: z.string(),
+        title: z.string(),
+        order: z.number().int().nonnegative(),
+      })
+      .optional(),
     draft: z.boolean().default(false),
   }),
 });

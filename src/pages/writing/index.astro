@@ -8,6 +8,8 @@ import { getReadingTime } from '../../utils/readingTime';
 const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
 );
+const featuredPosts = posts.filter(({ data }) => data.featured);
+const latestPosts = posts.filter(({ data }) => !data.featured);
 
 const title = 'Writing — Aniket Indulkar';
 const description =
@@ -28,10 +30,29 @@ const description =
         </p>
       </header>
 
+      {
+        featuredPosts.length > 0 && (
+          <section class="writing-featured" aria-labelledby="start-here">
+            <h2 id="start-here" class="writing-section-title">Start here</h2>
+            {featuredPosts.map((post) => (
+              <PostCard
+                href={`/writing/${post.id}/`}
+                title={post.data.title}
+                description={post.data.description}
+                publishedDate={post.data.publishedDate}
+                readingTime={getReadingTime(post.body ?? '')}
+                topics={post.data.topics}
+                featured
+              />
+            ))}
+          </section>
+        )
+      }
+
       <section class="post-list" aria-labelledby="latest-writing">
-        <h2 id="latest-writing" class="visually-hidden">Latest writing</h2>
+        <h2 id="latest-writing" class="writing-section-title">Latest writing</h2>
         {
-          posts.map((post) => (
+          latestPosts.map((post) => (
             <PostCard
               href={`/writing/${post.id}/`}
               title={post.data.title}

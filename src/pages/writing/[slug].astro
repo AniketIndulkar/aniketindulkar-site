@@ -6,17 +6,31 @@ import { getReadingTime } from '../../utils/readingTime';
 export async function getStaticPaths() {
   const posts = await getCollection('writing', ({ data }) => !data.draft);
 
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  return posts.map((post) => {
+    const seriesPosts = post.data.series
+      ? posts
+          .filter(({ data }) => data.series?.id === post.data.series?.id)
+          .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
+          .map((entry) => ({
+            id: entry.id,
+            title: entry.data.title,
+            order: entry.data.series?.order ?? 0,
+          }))
+      : [];
+
+    return {
+      params: { slug: post.id },
+      props: { post, seriesPosts },
+    };
+  });
 }
 
 interface Props {
   post: CollectionEntry<'writing'>;
+  seriesPosts: Array<{ id: string; title: string; order: number }>;
 }
 
-const { post } = Astro.props;
+const { post, seriesPosts } = Astro.props;
 const { Content, headings } = await render(post);
 ---
 
@@ -28,6 +42,9 @@ const { Content, headings } = await render(post);
   topics={post.data.topics}
   readingTime={getReadingTime(post.body ?? '')}
   headings={headings}
+  series={post.data.series}
+  seriesPosts={seriesPosts}
+  currentPostId={post.id}
 >
   <Content />
 </ArticleLayout>
