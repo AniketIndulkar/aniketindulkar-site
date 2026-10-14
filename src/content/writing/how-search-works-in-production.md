@@ -2,6 +2,7 @@
 title: "How Search Works in Production: From Inverted Indexes to Tail Latency"
 description: "A systems-level tour of lexical and semantic retrieval, multi-stage ranking, distributed search, freshness, and the latency tradeoffs that shape production systems."
 publishedDate: 2026-08-31
+socialImage: /images/writing/social/how-search-works-in-production.png
 topics:
   - Search
   - Distributed Systems

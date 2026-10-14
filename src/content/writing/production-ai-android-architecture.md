@@ -2,6 +2,7 @@
 title: "Production-Grade AI Applications on Android: An End-to-End Architecture"
 description: "A technical deep-dive for experienced Android engineers building their first serious AI-powered product."
 publishedDate: 2026-08-31
+socialImage: /images/writing/social/production-ai-android-architecture.png
 topics:
   - Android
   - AI Engineering
@@ -732,4 +733,3 @@ Build it in the roadmap's order. The moment it stops feeling like an AI project 
 **Cloud / platform:** [Firebase AI Logic](https://firebase.google.com/docs/ai-logic) · [Firebase App Check](https://firebase.google.com/docs/app-check) · [App Check for AI Logic](https://firebase.google.com/docs/ai-logic/app-check) · [Google Play AI-Generated Content policy](https://support.google.com/googleplay/android-developer/answer/14094294)
 
 **Observability & evals:** [OpenTelemetry GenAI span conventions](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md) · [promptfoo OWASP LLM red-teaming](https://www.promptfoo.dev/docs/red-team/owasp-llm-top-10/)
-
