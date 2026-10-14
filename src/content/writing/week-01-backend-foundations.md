@@ -2,6 +2,7 @@
 title: "Building IncidentOps AI: The Backend Decisions That Came First"
 description: "Learning Python backend engineering through API contracts, concurrency, persistence, and deployment."
 publishedDate: 2026-10-14
+socialImage: /images/writing/social/week-01-backend-foundations.png
 topics:
   - Backend Engineering
   - Reliability

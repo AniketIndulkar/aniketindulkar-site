@@ -40,6 +40,7 @@ const { Content, headings } = await render(post);
   publishedDate={post.data.publishedDate}
   updatedDate={post.data.updatedDate}
   topics={post.data.topics}
+  socialImage={post.data.socialImage}
   readingTime={getReadingTime(post.body ?? '')}
   headings={headings}
   series={post.data.series}

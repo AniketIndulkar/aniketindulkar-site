@@ -2,6 +2,7 @@
 title: "Building IncidentOps AI: Valid JSON Isn’t Enough"
 description: "Learning to build structured LLM interactions with explicit uncertainty, tested failures, and evidence about their limits."
 publishedDate: 2026-10-14
+socialImage: /images/writing/social/week-02-valid-json-isnt-enough.png
 topics:
   - LLM Engineering
   - Reliability

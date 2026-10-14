@@ -569,6 +569,12 @@ img {
   outline-offset: 0.35rem;
 }
 
+.writing-index__feed a:focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid var(--cyan);
+  outline-offset: 0.35rem;
+}
+
 .section-eyebrow {
   margin: 0 0 2rem;
   color: var(--cyan);
@@ -624,6 +630,17 @@ img {
   font-weight: 620;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.writing-index__feed {
+  margin: 3rem 0 0;
+  color: var(--quiet);
+  font-size: 0.82rem;
+}
+
+.writing-index__feed a {
+  color: var(--cyan);
+  text-underline-offset: 0.25em;
 }
 
 .post-card {

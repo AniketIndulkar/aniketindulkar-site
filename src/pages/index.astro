@@ -16,9 +16,36 @@ const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/AniketIndulkar', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniketindulkar7/', external: true },
 ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://aniketindulkar.dev/#website',
+      url: 'https://aniketindulkar.dev/',
+      name: 'Aniket Indulkar',
+      description,
+      inLanguage: 'en-GB',
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://aniketindulkar.dev/#person',
+      name: 'Aniket Indulkar',
+      url: 'https://aniketindulkar.dev/',
+      jobTitle: 'Senior Android Engineer',
+      description:
+        'Senior Android Engineer building around Android performance, mobile architecture and on-device AI.',
+      sameAs: [
+        'https://github.com/AniketIndulkar',
+        'https://www.linkedin.com/in/aniketindulkar7/',
+      ],
+    },
+  ],
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} structuredData={structuredData}>
   <main class="landing">
     <div class="landing__ambient" aria-hidden="true"></div>
 

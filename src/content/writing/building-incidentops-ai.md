@@ -2,6 +2,7 @@
 title: "Building IncidentOps AI: What I’m Building and Why"
 description: "A living overview of an evidence-driven incident triage and diagnosis system, the engineering principles behind it, and what I learn while building it."
 publishedDate: 2026-10-14
+socialImage: /images/writing/social/building-incidentops-ai.png
 topics:
   - AI Engineering
   - Incident Response

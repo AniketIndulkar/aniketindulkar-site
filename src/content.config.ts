@@ -13,6 +13,7 @@ const writing = defineCollection({
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     topics: z.array(z.string()).default([]),
+    socialImage: z.string().startsWith('/').optional(),
     featured: z.boolean().default(false),
     series: z
       .object({
