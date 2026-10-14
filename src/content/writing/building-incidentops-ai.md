@@ -121,4 +121,6 @@ IncidentOps AI is currently a prototype and learning system. It is not connected
 
 Those limits are part of the project rather than footnotes. The purpose is to establish evidence for each capability before expanding its authority.
 
-The source, roadmap, tests, evaluations, and decision records are available in [the IncidentOps AI repository](https://github.com/AniketIndulkar/IncidentOps-AI).
+## Project resources
+
+- [IncidentOps AI source code, roadmap, tests, evaluations, and decision records](https://github.com/AniketIndulkar/IncidentOps-AI)
