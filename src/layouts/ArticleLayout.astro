@@ -10,6 +10,7 @@ interface Props {
   publishedDate: Date;
   updatedDate?: Date;
   topics: string[];
+  socialImage?: string;
   readingTime: number;
   headings: MarkdownHeading[];
   series?: { id: string; title: string; order: number };
@@ -23,6 +24,7 @@ const {
   publishedDate,
   updatedDate,
   topics,
+  socialImage = '/og.png',
   readingTime,
   headings,
   series,
@@ -42,15 +44,47 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', {
   month: 'long',
   year: 'numeric',
 });
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(socialImage, Astro.site);
+const authorURL = new URL('/', Astro.site);
+const articleStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  image: socialImageURL.href,
+  datePublished: publishedDate.toISOString(),
+  dateModified: (updatedDate ?? publishedDate).toISOString(),
+  inLanguage: 'en-GB',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL.href,
+  },
+  author: {
+    '@type': 'Person',
+    name: 'Aniket Indulkar',
+    url: authorURL.href,
+    jobTitle: 'Senior Android Engineer',
+    sameAs: [
+      'https://github.com/AniketIndulkar',
+      'https://www.linkedin.com/in/aniketindulkar7/',
+    ],
+  },
+  keywords: topics.join(', '),
+};
 ---
 
 <BaseLayout
   title={`${title} — Aniket Indulkar`}
   description={description}
   pageType="article"
-  socialImage={null}
+  socialImage={socialImage}
+  socialImageAlt={`${title} — Aniket Indulkar`}
   publishedDate={publishedDate}
+  updatedDate={updatedDate}
   topics={topics}
+  structuredData={articleStructuredData}
 >
   <div class="site-page">
     <SiteHeader />
