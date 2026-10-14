@@ -6,6 +6,10 @@ topics:
   - Backend Engineering
   - Reliability
   - Python
+series:
+  id: incidentops-ai
+  title: Building IncidentOps AI
+  order: 1
 draft: false
 ---
 What should happen if the same incident report reaches an API ten times at once?

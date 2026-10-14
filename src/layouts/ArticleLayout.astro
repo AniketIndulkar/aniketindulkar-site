@@ -12,6 +12,9 @@ interface Props {
   topics: string[];
   readingTime: number;
   headings: MarkdownHeading[];
+  series?: { id: string; title: string; order: number };
+  seriesPosts?: Array<{ id: string; title: string; order: number }>;
+  currentPostId?: string;
 }
 
 const {
@@ -22,7 +25,17 @@ const {
   topics,
   readingTime,
   headings,
+  series,
+  seriesPosts = [],
+  currentPostId,
 } = Astro.props;
+
+const currentSeriesIndex = seriesPosts.findIndex(({ id }) => id === currentPostId);
+const previousSeriesPost = currentSeriesIndex > 0 ? seriesPosts[currentSeriesIndex - 1] : undefined;
+const nextSeriesPost =
+  currentSeriesIndex >= 0 && currentSeriesIndex < seriesPosts.length - 1
+    ? seriesPosts[currentSeriesIndex + 1]
+    : undefined;
 
 const dateFormatter = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -78,6 +91,50 @@ const dateFormatter = new Intl.DateTimeFormat('en-GB', {
             <div class="prose">
               <slot />
             </div>
+
+            {
+              series && seriesPosts.length > 1 && (
+                <nav class="article-series" aria-labelledby="article-series-title">
+                  <p class="article-series__eyebrow">Article series</p>
+                  <h2 id="article-series-title">{series.title}</h2>
+                  <ol>
+                    {seriesPosts.map((seriesPost) => (
+                      <li class:list={{ 'is-current': seriesPost.id === currentPostId }}>
+                        <span class="article-series__step">
+                          {seriesPost.order === 0
+                            ? 'Overview'
+                            : `Week ${String(seriesPost.order).padStart(2, '0')}`}
+                        </span>
+                        {seriesPost.id === currentPostId ? (
+                          <span aria-current="page">{seriesPost.title}</span>
+                        ) : (
+                          <a href={`/writing/${seriesPost.id}/`}>{seriesPost.title}</a>
+                        )}
+                      </li>
+                    ))}
+                  </ol>
+
+                  {(previousSeriesPost || nextSeriesPost) && (
+                    <div class="article-series__pager">
+                      {previousSeriesPost ? (
+                        <a href={`/writing/${previousSeriesPost.id}/`}>
+                          <span>Previous</span>
+                          {previousSeriesPost.title}
+                        </a>
+                      ) : (
+                        <span />
+                      )}
+                      {nextSeriesPost && (
+                        <a href={`/writing/${nextSeriesPost.id}/`}>
+                          <span>Next</span>
+                          {nextSeriesPost.title}
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </nav>
+              )
+            }
 
             <footer class="article-footer">
               <p class="article-footer__eyebrow">Written by Aniket Indulkar</p>

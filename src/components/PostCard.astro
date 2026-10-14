@@ -6,9 +6,10 @@ interface Props {
   publishedDate: Date;
   readingTime: number;
   topics: string[];
+  featured?: boolean;
 }
 
-const { href, title, description, publishedDate, readingTime, topics } = Astro.props;
+const { href, title, description, publishedDate, readingTime, topics, featured = false } = Astro.props;
 const formattedDate = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
   month: 'long',
@@ -16,9 +17,10 @@ const formattedDate = new Intl.DateTimeFormat('en-GB', {
 }).format(publishedDate);
 ---
 
-<article class="post-card">
+<article class:list={['post-card', { 'post-card--featured': featured }]}>
   <a class="post-card__link" href={href}>
     <div class="post-card__meta">
+      {featured && <span class="post-card__label">Project overview</span>}
       <time datetime={publishedDate.toISOString()}>{formattedDate}</time>
       <span aria-hidden="true">·</span>
       <span>{readingTime} min read</span>

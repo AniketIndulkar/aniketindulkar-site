@@ -6,6 +6,10 @@ topics:
   - LLM Engineering
   - Reliability
   - Evaluation
+series:
+  id: incidentops-ai
+  title: Building IncidentOps AI
+  order: 2
 draft: false
 ---
 The same incident report came back as SEV3 on one run and SEV2 on another. Both responses passed validation.
