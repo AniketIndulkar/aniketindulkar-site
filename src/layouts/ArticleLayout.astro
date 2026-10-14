@@ -113,21 +113,6 @@ const articleStructuredData = {
           <ul class="topic-list" aria-label="Article topics">
             {topics.map((topic) => <li>{topic}</li>)}
           </ul>
-
-          {
-            socialImage !== '/og.png' && (
-              <figure class="article-header__cover">
-                <img
-                  src={socialImage}
-                  alt=""
-                  width="1200"
-                  height="630"
-                  loading="eager"
-                  decoding="async"
-                />
-              </figure>
-            )
-          }
         </header>
 
         <div class="article-layout">
