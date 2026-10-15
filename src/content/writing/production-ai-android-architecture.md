@@ -26,6 +26,8 @@ One example application is used from the first page to the last, so every compon
 
 **Caretaker** is a property-maintenance app for small property-management companies. Tenants report problems ("the boiler in Flat 3 is making a banging noise and there's water under it"); property managers triage, assign contractors, and communicate back. The Android app is used by the property managers.
 
+The [Caretaker reference implementation on GitHub](https://github.com/AniketIndulkar/Caretaker) includes the Android app, backend, evaluation harness, and setup instructions.
+
 The AI features, chosen deliberately (see §2), are:
 
 1. **Issue triage.** Every incoming tenant report is classified into `{category, trade, urgency, hazardFlags, summary}` as a *structured output*. The manager sees a pre-filled triage card they can accept or correct.
