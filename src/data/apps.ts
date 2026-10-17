@@ -24,6 +24,7 @@ export interface AppEntry {
 export const apps: AppEntry[] = [
   {
     name: 'Learnt',
+    icon: '/images/apps/learnt.png',
     tagline: 'Log what you learned today. Review it later. Everything stays on your phone.',
     description:
       'A daily learning journal that turns one line a day into spaced-repetition flashcards and weekly quizzes generated from your own notes, so there is nothing to author and no decks to build. The optional evening recap and grammar cleanup run on a model downloaded to the device, which keeps the feature working with no network and no text leaving the phone.',
@@ -36,6 +37,7 @@ export const apps: AppEntry[] = [
   },
   {
     name: 'Curio',
+    icon: '/images/apps/curio.png',
     tagline: 'Rate movies, food and places in offline collections with notes and photos.',
     description:
       'A collection journal for rating and ranking the things you care about. Each collection defines its own rating dimensions with per-dimension weights, so rankings recompute as you tune what matters, and every entry gets a score breakdown and a radar chart. Collections export to a single portable backup file that carries the photos with it.',
@@ -48,6 +50,7 @@ export const apps: AppEntry[] = [
   },
   {
     name: 'Ahead',
+    icon: '/images/apps/ahead.png',
     tagline: 'Count down to trips and plans, then keep the memory.',
     description:
       'A countdown app for the days worth looking forward to, and a record of them afterwards. The home-screen widgets roll over at midnight on their own, so the day count stays correct without the app ever being opened. Once a day has been lived it moves to a Past tab that keeps the notes and photos from it.',
@@ -60,6 +63,7 @@ export const apps: AppEntry[] = [
   },
   {
     name: 'Ember',
+    icon: '/images/apps/ember.png',
     tagline: 'Offline Pomodoro timer for study and deep work, with stats, widgets and no ads.',
     description:
       'A focus timer that stays accurate with the screen off, driven from its ongoing notification, a resizable widget or a Quick Settings tile. Session history rolls up into weekly, monthly and yearly focus time with daily goals and streaks, and the whole history exports as CSV. Optional Do Not Disturb access silences interruptions for the length of a session.',
