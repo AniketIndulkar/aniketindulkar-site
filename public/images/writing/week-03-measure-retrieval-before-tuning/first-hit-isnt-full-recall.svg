@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 530" role="img" aria-labelledby="title desc">
+<title id="title">A first hit can still leave half the evidence missing</title><desc id="desc">In q25 the first result is the correct postmortem, but the runbook evidence is missing from the top five. The question has reciprocal rank 1, recall at 5 of 0.5 and precision at 5 of 0.2.</desc>
+<style>
+text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+.title { fill:#f2f2ec; font-size:26px; font-weight:650; }
+.label { fill:#f2f2ec; font-size:21px; font-weight:600; }
+.note { fill:#a9b3bf; font-size:19px; }
+.small { fill:#a9b3bf; font-size:17px; }
+.mono { font-family:ui-monospace,SFMono-Regular,monospace; }
+</style>
+<rect width="720" height="530" fill="#0b111b" rx="12"/>
+
+<text class="title" x="28" y="44">First-hit rank does not measure completeness</text>
+<text class="note" x="28" y="78">q25 needs a postmortem and a runbook.</text>
+<rect x="28" y="102" width="322" height="48" rx="7" fill="#15323c" stroke="#6ed9ee"/>
+<text x="46" y="133" fill="#6ed9ee" font-size="20" font-weight="600">A · Postmortem evidence found</text>
+<rect x="368" y="102" width="324" height="48" rx="7" fill="#211a15" stroke="#e6b86a"/>
+<text x="386" y="133" fill="#e6b86a" font-size="20" font-weight="600">B · Runbook evidence missing</text>
+<text class="small" x="28" y="187">TOP FIVE RESULTS</text>
+<g>
+  <rect x="28" y="202" width="664" height="40" rx="5" fill="#15323c"/>
+  <text class="label mono" x="45" y="230">1</text><text class="label" x="88" y="230">Notification outage postmortem</text>
+  <text x="665" y="230" fill="#6ed9ee" font-size="21" font-weight="650">A</text>
+  <text class="note mono" x="45" y="273">2</text><text class="note" x="88" y="273">Other postmortem</text>
+  <text class="note mono" x="45" y="312">3</text><text class="note" x="88" y="312">Other postmortem</text>
+  <text class="note mono" x="45" y="351">4</text><text class="note" x="88" y="351">Other postmortem</text>
+  <text class="note mono" x="45" y="390">5</text><text class="note" x="88" y="390">Other postmortem</text>
+</g>
+<path d="M28 411H692" stroke="#273342"/>
+<g text-anchor="middle">
+  <text class="small" x="139" y="443">RECIPROCAL RANK</text>
+  <text x="139" y="483" fill="#6ed9ee" font-size="32" font-weight="650">1 / 1 = 1.0</text>
+  <text class="small" x="360" y="443">EVIDENCE RECALL@5</text>
+  <text x="360" y="483" fill="#e6b86a" font-size="32" font-weight="650">1 / 2 = 0.5</text>
+  <text class="small" x="581" y="443">PRECISION@5</text>
+  <text x="581" y="483" fill="#f2f2ec" font-size="32" font-weight="650">1 / 5 = 0.2</text>
+</g>
+<text class="small" x="28" y="514">One question’s reciprocal rank is averaged into MRR@10.</text>
+
+</svg>

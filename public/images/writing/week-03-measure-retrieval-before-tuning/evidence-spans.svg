@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 500" role="img" aria-labelledby="title desc">
+<title id="title">The label stays fixed when the chunks change</title><desc id="desc">A gold evidence span occupies characters 400 to 600. Chunking A has a relevant chunk from 300 to 700, covering all the evidence. Chunking B has a relevant chunk from 500 to 800, covering exactly half. The document and evidence remain unchanged.</desc>
+<style>
+text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+.title { fill:#f2f2ec; font-size:26px; font-weight:650; }
+.label { fill:#f2f2ec; font-size:21px; font-weight:600; }
+.note { fill:#a9b3bf; font-size:19px; }
+.small { fill:#a9b3bf; font-size:17px; }
+.mono { font-family:ui-monospace,SFMono-Regular,monospace; }
+</style>
+<rect width="720" height="500" fill="#0b111b" rx="12"/>
+
+<text class="title" x="28" y="44">Label the evidence, then move the cuts</text>
+<text class="note" x="28" y="76">One cleaned document · character offsets</text>
+<g stroke="#273342" stroke-width="1">
+  <path d="M58 113V390 M178 113V390 M298 113V390 M418 113V390 M538 113V390 M658 113V390" stroke-dasharray="4 6"/>
+</g>
+<g class="small" text-anchor="middle">
+  <text x="58" y="106">0</text><text x="178" y="106">200</text>
+  <text x="298" y="106">400</text><text x="418" y="106">600</text>
+  <text x="538" y="106">800</text><text x="658" y="106">1,000</text>
+</g>
+<rect x="58" y="124" width="600" height="42" rx="5" fill="#151e2a" stroke="#273342"/>
+<rect x="298" y="124" width="120" height="42" rx="4" fill="#e6b86a"/>
+<text x="358" y="151" text-anchor="middle" fill="#0b111b" font-size="19" font-weight="650">Evidence</text>
+<path d="M298 167V390 M418 167V390" fill="none" stroke="#e6b86a" stroke-dasharray="5 5" opacity="0.7"/>
+<text class="label" x="28" y="213">Chunking A</text>
+<rect x="58" y="230" width="180" height="46" rx="4" fill="#151e2a" stroke="#273342"/>
+<rect x="238" y="230" width="240" height="46" rx="4" fill="#15323c" stroke="#6ed9ee" stroke-width="2"/>
+<rect x="478" y="230" width="180" height="46" rx="4" fill="#151e2a" stroke="#273342"/>
+<rect x="298" y="232" width="120" height="42" fill="#e6b86a" opacity="0.38"/>
+<text class="small" x="358" y="302" text-anchor="middle">300–700 → 100% covered → relevant</text>
+<text class="label" x="28" y="342">Chunking B</text>
+<rect x="58" y="358" width="300" height="44" rx="4" fill="#15323c" stroke="#6ed9ee" stroke-width="2"/>
+<rect x="358" y="358" width="180" height="44" rx="4" fill="#15323c" stroke="#6ed9ee" stroke-width="2"/>
+<rect x="538" y="358" width="120" height="44" rx="4" fill="#151e2a" stroke="#273342"/>
+<rect x="298" y="360" width="60" height="40" fill="#e6b86a" opacity="0.45"/>
+<rect x="358" y="360" width="60" height="40" fill="#e6b86a" opacity="0.45"/>
+<text class="small" x="360" y="430" text-anchor="middle">0–500 and 500–800 → 50% each → both relevant</text>
+<text class="note" x="28" y="475">Rule: same document + at least half of one evidence span.</text>
+
+</svg>
