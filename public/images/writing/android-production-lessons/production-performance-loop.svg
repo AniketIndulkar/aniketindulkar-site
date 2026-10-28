@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 310" role="img" aria-labelledby="loop-title loop-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 12px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .annotation { fill: #a9b3bf; font: 500 10.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.5; }
+  .connector-accent { fill: none; stroke: #79d49b; stroke-width: 1.5; stroke-dasharray: 5 4; }
+</style>
+  <title id="loop-title">The production performance loop</title>
+  <desc id="loop-desc">A seven-stage cycle: field telemetry from real devices, segmenting by device, OS, network and journey, reproducing the actual bottleneck, removing, deferring, caching or redesigning the work, a staged rollout or experiment, verifying user and guardrail metrics, and finally encoding a regression signal in CI or tooling, which feeds back into field telemetry.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8f9aa7" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#79d49b" />
+    </marker>
+  </defs>
+
+  <rect class="node-accent" x="58" y="10" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="29">Field telemetry, real devices</text>
+
+  <rect class="node" x="58" y="52" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="71">Segment: device, OS, network, journey</text>
+
+  <rect class="node" x="58" y="94" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="113">Reproduce the real bottleneck</text>
+
+  <rect class="node-secondary" x="58" y="136" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="155">Remove, defer or redesign the work</text>
+
+  <rect class="node" x="58" y="178" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="197">Staged rollout or experiment</text>
+
+  <rect class="node" x="58" y="220" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="239">Verify user and guardrail metrics</text>
+
+  <rect class="node-success" x="58" y="262" width="284" height="30" rx="6" />
+  <text class="label" x="200" y="281">Automate the regression signal</text>
+
+  <path class="connector" d="M 200 40 L 200 50" marker-end="url(#arrow)" />
+  <path class="connector" d="M 200 82 L 200 92" marker-end="url(#arrow)" />
+  <path class="connector" d="M 200 124 L 200 134" marker-end="url(#arrow)" />
+  <path class="connector" d="M 200 166 L 200 176" marker-end="url(#arrow)" />
+  <path class="connector" d="M 200 208 L 200 218" marker-end="url(#arrow)" />
+  <path class="connector" d="M 200 250 L 200 260" marker-end="url(#arrow)" />
+
+  <path class="connector-accent" d="M 58 277 L 28 277 L 28 25 L 56 25" marker-end="url(#arrow-green)" />
+  <text class="annotation" x="6" y="152" transform="rotate(-90 6 152)" text-anchor="middle">guardrail feeds the next cycle</text>
+</svg>

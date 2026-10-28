@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" role="img" aria-labelledby="ladder-title ladder-desc">
+  <style>
+  .node { fill: #0b111b; stroke: #273342; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 11.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .annotation { fill: #a9b3bf; font: 500 10.5px Inter, ui-sans-serif, system-ui, sans-serif; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.4; }
+  .guide { fill: none; stroke: #273342; stroke-width: 1; stroke-dasharray: 4 4; }
+</style>
+  <title id="ladder-title">The build optimisation ladder</title>
+  <desc id="ladder-desc">Five escalating build optimisation stages: optimise compilation, then optimise configuration, then skip unaffected work, then build features in isolation, and finally stop the IDE loading the unrelated repository. Each stage becomes relevant at a larger codebase scale than the last.</desc>
+
+  <defs>
+    <marker id="l-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8f9aa7" />
+    </marker>
+  </defs>
+
+  <rect class="node" x="2" y="164" width="130" height="26" rx="5" />
+  <text class="label" x="67" y="181">Optimise compilation</text>
+
+  <rect class="node" x="40" y="130" width="142" height="26" rx="5" />
+  <text class="label" x="111" y="147">Optimise configuration</text>
+
+  <rect class="node-secondary" x="78" y="96" width="130" height="26" rx="5" />
+  <text class="label" x="143" y="113">Skip unaffected work</text>
+
+  <rect class="node-secondary" x="116" y="62" width="172" height="26" rx="5" />
+  <text class="label" x="202" y="79">Build features in isolation</text>
+
+  <rect class="node-success" x="154" y="28" width="172" height="26" rx="5" />
+  <text class="label" x="240" y="45">Scope the IDE, not the repo</text>
+
+  <path class="connector" d="M 86 164 L 86 158" marker-end="url(#l-arrow)" />
+  <path class="connector" d="M 130 130 L 130 124" marker-end="url(#l-arrow)" />
+  <path class="connector" d="M 162 96 L 162 90" marker-end="url(#l-arrow)" />
+  <path class="connector" d="M 220 62 L 220 56" marker-end="url(#l-arrow)" />
+
+  <path class="guide" d="M 2 176 L 2 10" />
+  <text class="annotation" x="12" y="18">larger codebase, larger organisation</text>
+</svg>

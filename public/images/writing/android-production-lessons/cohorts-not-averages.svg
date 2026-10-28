@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" role="img" aria-labelledby="cohort-title cohort-desc">
+  <style>
+  .node-accent { fill: #10202a; stroke: #6ed9ee; stroke-width: 1.5; }
+  .node-secondary { fill: #151827; stroke: #9187ff; stroke-width: 1.5; }
+  .node-warning { fill: #1b1410; stroke: #d79468; stroke-width: 1.5; }
+  .node-success { fill: #0f1d18; stroke: #79d49b; stroke-width: 1.5; }
+  .label { fill: #f2f2ec; font: 600 12px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-dim { fill: #f2f2ec; font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .label-small { fill: #a9b3bf; font: 500 10.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: middle; }
+  .connector { fill: none; stroke: #8f9aa7; stroke-width: 1.4; }
+</style>
+  <title id="cohort-title">Segment before you optimise</title>
+  <desc id="cohort-desc">A healthy-looking overall percentile splits into four parallel segmentation dimensions: device capability cohort, Android or vendor version, network quality cohort, and journey or feature. All four converge on locating the harmed tail, which is then the population to optimise.</desc>
+
+  <defs>
+    <marker id="c-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8f9aa7" />
+    </marker>
+  </defs>
+
+  <rect class="node-accent" x="84" y="10" width="192" height="36" rx="6" />
+  <text class="label" x="180" y="27">Overall P95 looks healthy</text>
+  <text class="label-small" x="180" y="40">one number per metric</text>
+
+  <rect class="node-secondary" x="4" y="88" width="84" height="48" rx="6" />
+  <text class="label-dim" x="46" y="109">Device</text>
+  <text class="label-dim" x="46" y="123">capability</text>
+
+  <rect class="node-secondary" x="94" y="88" width="84" height="48" rx="6" />
+  <text class="label-dim" x="136" y="109">Android /</text>
+  <text class="label-dim" x="136" y="123">vendor version</text>
+
+  <rect class="node-secondary" x="184" y="88" width="84" height="48" rx="6" />
+  <text class="label-dim" x="226" y="109">Network</text>
+  <text class="label-dim" x="226" y="123">quality</text>
+
+  <rect class="node-secondary" x="274" y="88" width="84" height="48" rx="6" />
+  <text class="label-dim" x="316" y="109">Journey /</text>
+  <text class="label-dim" x="316" y="123">feature</text>
+
+  <rect class="node-warning" x="84" y="186" width="192" height="34" rx="6" />
+  <text class="label" x="180" y="207">Locate the harmed tail</text>
+
+  <rect class="node-success" x="84" y="238" width="192" height="32" rx="6" />
+  <text class="label" x="180" y="259">Optimise that cohort</text>
+
+  <path class="connector" d="M 180 46 C 180 68, 46 64, 46 86" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 180 46 C 180 68, 136 64, 136 86" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 180 46 C 180 68, 226 64, 226 86" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 180 46 C 180 68, 316 64, 316 86" marker-end="url(#c-arrow)" />
+
+  <path class="connector" d="M 46 136 C 46 162, 180 158, 180 184" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 136 136 C 136 162, 180 158, 180 184" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 226 136 C 226 162, 180 158, 180 184" marker-end="url(#c-arrow)" />
+  <path class="connector" d="M 316 136 C 316 162, 180 158, 180 184" marker-end="url(#c-arrow)" />
+
+  <path class="connector" d="M 180 220 L 180 236" marker-end="url(#c-arrow)" />
+</svg>
