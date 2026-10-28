@@ -2,6 +2,7 @@
 title: "Building IncidentOps AI: Measure Retrieval Before You Tune It"
 description: "What a near-whole-document chunking winner taught me about evidence labels, retrieval metrics, and the cost hidden behind a high score."
 publishedDate: 2026-10-17
+socialImage: /images/writing/social/week-03-measure-retrieval-before-tuning.png
 topics:
   - Retrieval
   - Evaluation

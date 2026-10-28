@@ -2,6 +2,7 @@
 title: "What Production Android Teams Learned That the Docs Can't Teach"
 description: "Fifty-three engineering write-ups from Meta, Grab, Square, Duolingo, Signal and others, and the twelve patterns that keep reappearing in them."
 publishedDate: 2026-10-28
+socialImage: /images/writing/social/android-production-lessons.png
 topics:
   - Android
   - Performance
