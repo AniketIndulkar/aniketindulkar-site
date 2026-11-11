@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#0c151e"/></pattern></defs>
+  <rect width="1200" height="630" fill="#071018"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <g font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="72" y="76" fill="#6ed9ee" font-size="20" font-weight="700" letter-spacing="4">ANIKET INDULKAR / WRITING</text>
+    <g fill="#f1f3ef" font-size="64" font-weight="700">
+      <text x="72" y="192">How NFC Works</text>
+      <text x="72" y="268">on Mobile Phones</text>
+    </g>
+    <text x="72" y="362" fill="#a8b4bc" font-size="26">From magnetic coupling to passport verification</text>
+    <text x="72" y="410" fill="#a8b4bc" font-size="26">A ground-up guide for engineers</text>
+    <text x="72" y="538" fill="#91a2ae" font-size="21" letter-spacing="2">ANDROID / MOBILE ENGINEERING / NFC</text>
+    <text x="72" y="583" fill="#657887" font-size="18">aniketindulkar.dev</text>
+    <g fill="none" stroke-width="3">
+      <rect x="840" y="174" width="110" height="212" rx="18" fill="#0c151e" stroke="#2e3a46"/>
+      <rect x="855" y="218" width="80" height="122" rx="18" stroke="#6ed9ee"/>
+      <rect x="865" y="228" width="60" height="102" rx="12" stroke="#6ed9ee"/>
+      <rect x="1030" y="206" width="114" height="162" rx="10" fill="#171a2e" stroke="#9187ff"/>
+      <rect x="1042" y="218" width="90" height="138" rx="10" stroke="#9187ff"/>
+      <path d="M960 256h60m-10-7 10 7-10 7" stroke="#6ed9ee"/>
+      <path d="M1020 309h-60m10-7-10 7 10 7" stroke="#9187ff"/>
+    </g>
+    <text x="995" y="158" fill="#6ed9ee" font-size="18" text-anchor="middle">13.56 MHz</text>
+    <text x="995" y="426" fill="#657887" font-size="17" text-anchor="middle">ONE FIELD. POWER + DATA.</text>
+  </g>
+</svg>

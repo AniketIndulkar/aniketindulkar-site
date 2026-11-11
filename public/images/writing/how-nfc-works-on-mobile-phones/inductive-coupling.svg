@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="540" viewBox="0 0 800 540" role="img" aria-labelledby="title desc">
+  <title id="title">One field, power and data</title>
+  <desc id="desc">A phone reader creates a 13.56 MHz magnetic field. A nearby passport antenna harvests energy to power its battery-less chip. The phone modulates the field to send commands. The chip changes its load to send a reply through the same coupled coils.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#15202e" stroke-width="1"/></pattern>
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="m0 0 10 5-10 5" fill="#6ed9ee"/></marker>
+    <marker id="violet-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="m0 0 10 5-10 5" fill="#9187ff"/></marker>
+  </defs>
+  <style>
+    text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .label { fill: #f2f2ec; font-size: 24px; font-weight: 600; }
+    .note { fill: #a9b3bf; font-size: 21px; }
+    .coil { fill: none; stroke-width: 3; }
+  </style>
+  <rect width="800" height="540" rx="12" fill="#0b111b"/>
+  <rect width="800" height="540" rx="12" fill="url(#grid)"/>
+  <text x="40" y="48" fill="#6ed9ee" font-size="17" font-weight="600" letter-spacing="3">NFC / THE PHYSICAL LINK</text>
+  <text class="label" x="40" y="90">One field, power and data.</text>
+  <g stroke="#6ed9ee" fill="none" stroke-width="1.5" opacity="0.2">
+    <ellipse cx="400" cy="260" rx="180" ry="100"/>
+    <ellipse cx="400" cy="260" rx="210" ry="130"/>
+    <ellipse cx="400" cy="260" rx="240" ry="160"/>
+  </g>
+  <rect x="60" y="138" width="174" height="248" rx="23" fill="#101c29" stroke="#405065" stroke-width="2"/>
+  <path d="M119 153h56" stroke="#405065" stroke-width="5" stroke-linecap="round"/>
+  <g class="coil" stroke="#6ed9ee">
+    <rect x="83" y="186" width="128" height="144" rx="24"/>
+    <rect x="94" y="197" width="106" height="122" rx="19"/>
+    <rect x="105" y="208" width="84" height="100" rx="14"/>
+  </g>
+  <text x="147" y="358" text-anchor="middle" fill="#6ed9ee" font-size="19">Reader coil</text>
+  <rect x="566" y="158" width="174" height="220" rx="12" fill="#171827" stroke="#635d91" stroke-width="2"/>
+  <g class="coil" stroke="#9187ff">
+    <rect x="582" y="174" width="142" height="188" rx="18"/>
+    <rect x="592" y="184" width="122" height="168" rx="14"/>
+    <rect x="602" y="194" width="102" height="148" rx="10"/>
+  </g>
+  <rect x="624" y="242" width="58" height="45" rx="6" fill="#211f38" stroke="#9187ff" stroke-width="2"/>
+  <text x="653" y="271" text-anchor="middle" fill="#f2f2ec" font-size="18">Chip</text>
+  <text x="400" y="187" text-anchor="middle" fill="#6ed9ee" font-size="25" font-weight="600">13.56 MHz</text>
+  <text x="400" y="220" text-anchor="middle" class="note">Power + commands</text>
+  <path d="M258 242H542" stroke="#6ed9ee" stroke-width="2.5" marker-end="url(#cyan-arrow)"/>
+  <path d="M542 284H258" stroke="#9187ff" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#violet-arrow)"/>
+  <text x="400" y="320" text-anchor="middle" fill="#b5acf6" font-size="21">Reply: changes in load</text>
+  <text class="label" x="147" y="423" text-anchor="middle">Phone</text>
+  <text class="label" x="653" y="423" text-anchor="middle">Passport / ID</text>
+  <path d="M40 451H760" stroke="#273342"/>
+  <text class="note" x="400" y="487" text-anchor="middle">A few centimetres. Aligned coils. No tag battery.</text>
+  <text x="400" y="519" text-anchor="middle" fill="#7f8b98" font-size="17">Conceptual view: keep the phone steady throughout the scan.</text>
+</svg>
