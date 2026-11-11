@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#0c151e"/></pattern></defs>
+  <rect width="1200" height="630" fill="#071018"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <g font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="72" y="76" fill="#a594ff" font-size="20" font-weight="700" letter-spacing="4">INCIDENTOPS AI / WEEK 04</text>
+    <g fill="#f1f3ef" font-size="72" font-weight="700">
+      <text x="72" y="192">Earn the</text>
+      <text x="72" y="278">Complexity</text>
+    </g>
+    <text x="72" y="372" fill="#a8b4bc" font-size="26">Hybrid search earned its place.</text>
+    <text x="72" y="414" fill="#a8b4bc" font-size="26">The reranker stayed off.</text>
+    <text x="72" y="538" fill="#91a2ae" font-size="21" letter-spacing="2">RETRIEVAL / EVALUATION / AI ENGINEERING</text>
+    <text x="72" y="583" fill="#657887" font-size="18">aniketindulkar.dev</text>
+    <path d="M986 211v30m0 64v30" stroke="#2e3a46" stroke-width="2"/>
+    <rect x="846" y="153" width="280" height="58" rx="8" fill="#0c151e" stroke="#2e3a46" stroke-width="2"/>
+    <text x="986" y="189" fill="#a8b4bc" font-size="20" font-weight="600" text-anchor="middle">DENSE BASELINE</text>
+    <rect x="846" y="241" width="280" height="64" rx="8" fill="#10202a" stroke="#6ed9ee" stroke-width="2"/>
+    <text x="986" y="280" fill="#6ed9ee" font-size="22" font-weight="700" text-anchor="middle">HYBRID / SELECTED</text>
+    <rect x="846" y="335" width="280" height="64" rx="8" fill="#171a2e" stroke="#9187ff" stroke-width="2" stroke-dasharray="6 5"/>
+    <text x="986" y="374" fill="#a594ff" font-size="21" font-weight="600" text-anchor="middle">RERANKER / OFF</text>
+    <text x="986" y="444" fill="#657887" font-size="15" letter-spacing="2" text-anchor="middle">MEASURE. THEN DECIDE.</text>
+  </g>
+</svg>
