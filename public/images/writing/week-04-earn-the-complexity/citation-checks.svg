@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="720" viewBox="0 0 800 720" role="img" aria-labelledby="title desc">
+  <title id="title">A real quote is not proof of a claim</title>
+  <desc id="desc">Five retrieved chunks become numbered evidence. The model proposes causes with evidence IDs and quotes. The server checks the ID, a case-sensitive quote match allowing whitespace differences, and a minimum of twelve characters. It drops causes with no valid citation and returns verified source spans for the rest. Claim entailment is not checked.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="m0 0 10 5-10 5" fill="#8f9aa7"/></marker>
+  </defs>
+  <style>
+    text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    .title { fill: #f2f2ec; font-size: 25px; font-weight: 600; }
+    .label { fill: #f2f2ec; font-size: 23px; font-weight: 600; }
+    .note { fill: #a9b3bf; font-size: 20px; }
+    .arrow { fill: none; stroke: #8f9aa7; stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <rect width="800" height="720" rx="12" fill="#0b111b"/>
+  <text x="40" y="44" fill="#a594ff" font-size="17" font-weight="600" letter-spacing="3">INCIDENTOPS AI / WEEK 04</text>
+  <text class="title" x="40" y="88">A real quote is not proof of a claim.</text>
+  <rect x="40" y="120" width="720" height="82" rx="10" fill="#10202a" stroke="#6ed9ee"/>
+  <text class="label" x="64" y="154">Retrieve five chunks</text>
+  <text class="note" x="64" y="182">Number the stored evidence E1–E5.</text>
+  <path class="arrow" d="M400 203v24"/>
+  <rect x="40" y="232" width="720" height="82" rx="10" fill="#151827" stroke="#9187ff"/>
+  <text class="label" x="64" y="266">Model proposes a cause + citations</text>
+  <text class="note" x="64" y="294">Each citation names an evidence ID and a verbatim quote.</text>
+  <path class="arrow" d="M400 315v24"/>
+  <rect x="40" y="344" width="720" height="128" rx="10" fill="#101923" stroke="#405065"/>
+  <text class="label" x="64" y="380">Server checks the citation</text>
+  <text class="note" x="64" y="412">Known ID · quote in that chunk · at least 12 characters</text>
+  <text class="note" x="64" y="444">Case must match. Whitespace may differ.</text>
+  <path class="arrow" d="M265 473v25"/>
+  <path class="arrow" d="M610 473v25"/>
+  <rect x="40" y="504" width="432" height="100" rx="10" fill="#0f1d18" stroke="#79d49b"/>
+  <text x="64" y="538" fill="#79d49b" font-size="22" font-weight="600">At least one valid citation</text>
+  <text class="note" x="64" y="568">Return cause + source metadata</text>
+  <text class="note" x="64" y="592">and the matched character span.</text>
+  <rect x="488" y="504" width="272" height="100" rx="10" fill="#251b18" stroke="#d79468"/>
+  <text x="512" y="538" fill="#d79468" font-size="22" font-weight="600">No valid citation</text>
+  <text class="note" x="512" y="573">Drop the cause.</text>
+  <path d="M40 636h720" stroke="#273342"/>
+  <text x="40" y="670" fill="#d79468" font-size="22" font-weight="600">Still unchecked: does the quote support the claim?</text>
+  <text class="note" x="40" y="701">Provenance is validated. Claim entailment needs its own evaluation.</text>
+</svg>
