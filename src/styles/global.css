@@ -881,6 +881,7 @@ img {
   color: #c1cad4;
   font-size: clamp(1.02rem, 1.2vw, 1.095rem);
   line-height: 1.82;
+  overflow-wrap: anywhere;
 }
 
 .prose > p:first-child {
